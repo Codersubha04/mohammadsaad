@@ -1,0 +1,4370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammad Saad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg: #050A14;
+      --panel: rgba(255, 255, 255, 0.04);
+      --line: rgba(255, 255, 255, 0.1);
+      --text: #ffffff;
+      --muted: rgba(239, 234, 227, 0.86);
+      --faint: rgba(255, 255, 255, 0.62);
+      --accent: #C8A46D;
+      --accent-strong: #d7b177;
+      --hero-pad-x: 112px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 0;
+      transition: background .35s ease, backdrop-filter .35s ease, border-color .35s ease, padding .35s ease;
+    }
+
+    #navbar.scrolled {
+      background: rgba(5, 10, 20, 0.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 12px 0;
+    }
+
+    .nav-shell {
+      width: min(1480px, calc(100% - 72px));
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      justify-self: start;
+    }
+
+    .logo-icon {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      line-height: 0.9;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .logo-text span {
+      font-size: 0.82rem;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+    }
+
+    .nav-links a {
+      position: relative;
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.92);
+      transition: color .3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -9px;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width .3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .cta-btn {
+      justify-self: end;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 30px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      box-shadow: 0 18px 45px rgba(200, 164, 109, 0.18);
+      transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      background: var(--accent-strong);
+      box-shadow: 0 20px 48px rgba(200, 164, 109, 0.3);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .nav-toggle-line {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: #fff;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .mobile-nav-panel {
+      display: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(5, 10, 20, 0.96) 0%, rgba(5, 10, 20, 0.86) 28%, rgba(5, 10, 20, 0.54) 56%, rgba(5, 10, 20, 0.16) 100%),
+        radial-gradient(circle at 26% 50%, rgba(200, 164, 109, 0.08) 0%, rgba(200, 164, 109, 0) 35%),
+        url("images/hero-bg.png") center center / cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 10, 20, 0.26) 0%, rgba(5, 10, 20, 0.12) 18%, rgba(5, 10, 20, 0.4) 100%),
+        radial-gradient(circle at 68% 36%, rgba(200, 164, 109, 0.08) 0%, rgba(200, 164, 109, 0) 24%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1480px, calc(100% - 72px));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 0 var(--hero-pad-x);
+      display: grid;
+      grid-template-columns: 45% 55%;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 138px 0 64px;
+      max-width: 640px;
+      --hero-stack-gap: 24px;
+    }
+
+    .hero-kicker {
+      margin-bottom: var(--hero-stack-gap);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.45rem, 5.35vw, 5.75rem);
+      line-height: 0.88;
+      letter-spacing: -2.4px;
+      font-weight: 600;
+    }
+
+    .hero-title .gold {
+      color: var(--accent);
+    }
+
+    .hero-title-line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .hero-title-line + .hero-title-line {
+      margin-top: 0.06em;
+    }
+
+    .hero-title-line > span {
+      display: inline-block;
+      will-change: transform, opacity;
+    }
+
+    .hero-description {
+      margin-top: var(--hero-stack-gap);
+      max-width: 470px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.62;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: var(--hero-stack-gap);
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-width: 214px;
+      padding: 18px 28px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease;
+    }
+
+    .hero-btn-primary {
+      background: linear-gradient(180deg, #e2bb7d 0%, #c8a46d 100%);
+      color: #fff;
+      box-shadow: 0 22px 40px rgba(200, 164, 109, 0.22);
+    }
+
+    .hero-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 26px 50px rgba(200, 164, 109, 0.32);
+    }
+
+    .hero-btn-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.02);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(200, 164, 109, 0.55);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      margin-top: calc(var(--hero-stack-gap) + 40px);
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.25);
+      flex-shrink: 0;
+    }
+
+    .stat-icon svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .instagram {
+      background: linear-gradient(135deg, #833ab4 0%, #c13584 42%, #fd1d1d 70%, #fcb045 100%);
+    }
+
+    .linkedin {
+      background: #0A66C2;
+    }
+
+    .youtube {
+      background: #FF2D20;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      line-height: 1;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .stat-label {
+      margin-top: 3px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.82rem;
+      font-weight: 400;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 100vh;
+    }
+
+    .portrait-glow {
+      position: absolute;
+      right: 12%;
+      bottom: 12%;
+      width: min(36vw, 560px);
+      height: min(36vw, 560px);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200, 164, 109, 0.34) 0%, rgba(200, 164, 109, 0.16) 32%, rgba(200, 164, 109, 0) 72%);
+      filter: blur(36px);
+      pointer-events: none;
+    }
+
+    .portrait-wrap {
+      position: absolute;
+      right: -1.8%;
+      bottom: 0;
+      height: 94vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      will-change: transform;
+    }
+
+    .portrait {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 36px 70px rgba(0, 0, 0, 0.48));
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      right: 54px;
+      top: 50%;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      transform: translateY(-50%) rotate(180deg);
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-text {
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .scroll-mouse {
+      width: 28px;
+      height: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .scroll-mouse::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 9px;
+      width: 4px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.8);
+      transform: translateX(-50%);
+      animation: wheel 1.8s ease-in-out infinite;
+    }
+
+    .press-strip {
+      position: relative;
+      z-index: 4;
+      margin-top: -1px;
+      background: #07101d;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+    }
+
+    .press-shell {
+      width: min(1480px, calc(100% - 72px));
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .press-row {
+      min-height: 88px;
+      display: grid;
+      grid-template-columns: 180px 1fr 86px;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .press-label {
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .press-logos {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(140px, 1fr));
+      align-items: center;
+      gap: 26px;
+      transition: transform .35s ease;
+    }
+
+    .press-logo {
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.95);
+      filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.2));
+    }
+
+    .press-logo img {
+      max-height: 46px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .press-logo img.news18-logo {
+      max-height: 68px;
+    }
+
+    .press-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .press-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.02);
+      color: rgba(255, 255, 255, 0.9);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.86rem;
+      transition: border-color .25s ease, transform .25s ease, background .25s ease;
+    }
+
+    .press-arrow:hover {
+      border-color: rgba(200, 164, 109, 0.45);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-1px);
+    }
+
+    .page-section {
+      background: #07111d;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-shell {
+      width: min(1760px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .footer-panel {
+      display: grid;
+      grid-template-columns: 1.15fr 1.15fr 1.2fr 1.35fr;
+      gap: 0;
+      min-height: 176px;
+      padding: 24px 0 22px;
+      background: #07111d;
+    }
+
+    .footer-column {
+      padding: 0 48px;
+      border-left: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .footer-column:first-child {
+      border-left: 0;
+      padding-left: 26px;
+    }
+
+    .footer-signature {
+      width: 212px;
+      max-width: 100%;
+      opacity: 0.96;
+      margin-bottom: 12px;
+    }
+
+    .footer-copy,
+    .footer-note,
+    .footer-news-copy {
+      color: rgba(236, 229, 216, 0.82);
+      font-size: 0.92rem;
+      line-height: 1.45;
+      font-weight: 400;
+    }
+
+    .footer-copy {
+      max-width: 260px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: rgba(236, 229, 216, 0.66);
+    }
+
+    .footer-title {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #c8a46d;
+      font-size: 0.82rem;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .footer-links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(110px, 1fr));
+      gap: 8px 18px;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.92rem;
+      line-height: 1.15;
+      transition: color .25s ease;
+    }
+
+    .footer-link:hover {
+      color: #c8a46d;
+    }
+
+    .footer-contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .footer-contact-item svg {
+      width: 16px;
+      height: 16px;
+      stroke: #f1e4cb;
+      fill: none;
+      stroke-width: 1.8;
+      flex-shrink: 0;
+    }
+
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-width: 210px;
+      min-height: 42px;
+      padding: 0 18px;
+      margin-top: 16px;
+      border-radius: 4px;
+      background: #d7a55a;
+      color: #fffaf0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      box-shadow: 0 10px 24px rgba(215, 165, 90, 0.18);
+    }
+
+    .footer-news-copy {
+      max-width: 300px;
+      margin-bottom: 14px;
+    }
+
+    .footer-newsletter {
+      display: flex;
+      align-items: stretch;
+      max-width: 278px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #0a1523;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .footer-newsletter input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.92);
+      padding: 11px 14px;
+      font-size: 0.88rem;
+      font-family: inherit;
+    }
+
+    .footer-newsletter input::placeholder {
+      color: rgba(236, 229, 216, 0.48);
+    }
+
+    .footer-submit {
+      width: 46px;
+      border: 0;
+      background: #d7a55a;
+      color: #fffaf0;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .footer-social {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #091422;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.96);
+    }
+
+    .footer-social svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    .journey-section {
+      background: #faf7f2;
+      padding: 64px 0 58px;
+      overflow: hidden;
+    }
+
+    .journey-shell {
+      width: min(1850px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 0 58px;
+      display: grid;
+      grid-template-columns: 390px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    .journey-intro {
+      padding-top: 18px;
+    }
+
+    .journey-eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #d4b486;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .journey-heading {
+      color: #0d1522;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.55rem, 3.65vw, 3.75rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      font-weight: 600;
+    }
+
+    .journey-heading .accent {
+      color: #d2af79;
+    }
+
+    .journey-copy {
+      max-width: 340px;
+      margin-top: 28px;
+      color: #4a4745;
+      font-size: 0.96rem;
+      line-height: 1.58;
+      font-weight: 400;
+    }
+
+    .journey-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 34px;
+      padding: 18px 26px;
+      border-radius: 12px;
+      background: #071426;
+      color: #fff;
+      font-size: 0.98rem;
+      font-weight: 600;
+      box-shadow: 0 14px 30px rgba(7, 20, 38, 0.14);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .journey-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 42px rgba(7, 20, 38, 0.2);
+    }
+
+    .journey-btn .arrow {
+      font-size: 1.04rem;
+    }
+
+    .journey-timeline {
+      position: relative;
+      padding-top: 0;
+    }
+
+    .journey-track {
+      position: absolute;
+      top: 22px;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: #bdb4ab;
+      border-radius: 999px;
+    }
+
+    .journey-cards {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .journey-card-wrap {
+      position: relative;
+      padding-top: 52px;
+    }
+
+    .journey-node {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: 2;
+      transform: translateX(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: #d0a05e;
+      box-shadow: 0 0 0 10px #faf7f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .journey-node::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 1px;
+      height: 20px;
+      background: #e7dfd7;
+      transform: translateX(-50%);
+    }
+
+    .journey-node svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .journey-card {
+      min-height: 382px;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) 112px;
+      background: #fff;
+      border: 1px solid rgba(18, 23, 31, 0.025);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 22px rgba(20, 24, 31, 0.022);
+    }
+
+    .journey-card-body {
+      padding: 14px 14px 10px;
+      color: #151b26;
+    }
+
+    .journey-number {
+      color: #d8c6aa;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .journey-card-title {
+      margin-bottom: 12px;
+      color: #131720;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.12rem;
+      line-height: 1.1;
+      font-weight: 600;
+    }
+
+    .journey-card-lines {
+      display: grid;
+      gap: 6px;
+      color: #20242d;
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .journey-card-lines strong {
+      display: block;
+      color: #12161f;
+      font-weight: 600;
+    }
+
+    .journey-card-image {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 0 0 16px 16px;
+      overflow: hidden;
+    }
+
+    .journey-card-image::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.88) 22%, rgba(255, 255, 255, 0.34) 62%, rgba(255, 255, 255, 0) 100%);
+      pointer-events: none;
+    }
+
+    .impact-strip {
+      background: #071a2d;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 28px 0 30px;
+    }
+
+    .impact-shell {
+      width: min(1760px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      align-items: center;
+    }
+
+    .impact-item {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      min-height: 118px;
+      padding: 0 34px;
+      border-right: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .impact-item:first-child {
+      padding-left: 10px;
+    }
+
+    .impact-item:last-child {
+      border-right: 0;
+      padding-right: 10px;
+    }
+
+    .impact-icon {
+      width: 66px;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b88a57;
+      flex-shrink: 0;
+    }
+
+    .impact-icon svg {
+      width: 60px;
+      height: 60px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .impact-value {
+      color: #ffffff;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.25rem;
+      line-height: 0.9;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .impact-label {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.92rem;
+      line-height: 1.28;
+      font-weight: 400;
+    }
+
+    .news-section {
+      background: #fbf8f3;
+      padding: 78px 0 72px;
+    }
+
+    .news-shell {
+      width: min(1760px, calc(100% - 42px));
+      margin: 0 auto;
+      padding: 0 54px;
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr) 58px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .news-intro {
+      padding-top: 8px;
+    }
+
+    .news-eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #d2ad7b;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .news-heading {
+      color: #101826;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.7rem, 4vw, 3.9rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+    }
+
+    .news-copy {
+      max-width: 260px;
+      margin-top: 18px;
+      color: #4c4b49;
+      font-size: 0.98rem;
+      line-height: 1.58;
+    }
+
+    .news-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 28px;
+      padding: 16px 22px;
+      border-radius: 10px;
+      background: #09172a;
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 600;
+      box-shadow: 0 14px 28px rgba(9, 23, 42, 0.12);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .news-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(9, 23, 42, 0.16);
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .news-card {
+      overflow: hidden;
+      border-radius: 14px;
+      background: #071426;
+      box-shadow: 0 14px 36px rgba(10, 18, 32, 0.08);
+      border: 1px solid rgba(10, 18, 32, 0.08);
+    }
+
+    .news-card-top {
+      position: relative;
+      height: 118px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .news-card-top::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7, 20, 38, 0.06) 0%, rgba(7, 20, 38, 0.42) 100%);
+    }
+
+    .news-badge-row {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .news-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.88);
+      color: #101826;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .news-badge.brand {
+      background: rgba(220, 40, 40, 0.94);
+      color: #fff;
+    }
+
+    .news-badge.brand.dark {
+      background: rgba(26, 43, 74, 0.94);
+    }
+
+    .news-card-top-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.72rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .news-card-body {
+      padding: 14px 14px 16px;
+      color: #fff;
+    }
+
+    .news-source {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .news-title {
+      margin-top: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      line-height: 1.16;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .news-date {
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+
+    .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      color: #d6ad72;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .news-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+      padding-top: 128px;
+    }
+
+    .news-arrow {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(18, 23, 31, 0.08);
+      background: rgba(255, 255, 255, 0.88);
+      color: #d1b07f;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 10px 22px rgba(20, 24, 31, 0.06);
+    }
+
+    .hospital-feature {
+      background: #061427;
+      padding: 34px 0 36px;
+    }
+
+    .hospital-shell {
+      width: min(1760px, calc(100% - 34px));
+      margin: 0 auto;
+      padding: 0 44px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.96fr 0.58fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hospital-visual {
+      position: relative;
+      min-height: 344px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #102033;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.16);
+    }
+
+    .hospital-visual-image {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 20, 38, 0.1) 0%, rgba(8, 20, 38, 0.2) 100%), url('images/mr-hospital-feature.png') center center / cover no-repeat;
+    }
+
+    .hospital-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      width: 118px;
+      height: 118px;
+      border-radius: 999px;
+      border: 3px solid rgba(255, 255, 255, 0.62);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(4px);
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 34px rgba(0, 0, 0, 0.16);
+    }
+
+    .hospital-play::before {
+      content: "";
+      margin-left: 8px;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 30px solid #ffffff;
+    }
+
+    .hospital-body {
+      color: #fff;
+      padding: 8px 10px 8px 0;
+    }
+
+    .hospital-eyebrow {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: #d4ab76;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hospital-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.7rem, 4vw, 4rem);
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .hospital-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+
+    .hospital-location svg {
+      width: 16px;
+      height: 16px;
+      stroke: #d4ab76;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .hospital-copy {
+      max-width: 540px;
+      margin-top: 18px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .hospital-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 18px;
+      margin-top: 18px;
+    }
+
+    .hospital-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .hospital-point svg {
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      flex-shrink: 0;
+      stroke: #d4ab76;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .hospital-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 22px;
+      padding: 16px 24px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #e1ba7b 0%, #d3a564 100%);
+      color: #fff;
+      font-size: 0.96rem;
+      font-weight: 600;
+      box-shadow: 0 16px 30px rgba(211, 165, 100, 0.18);
+    }
+
+    .hospital-side {
+      min-height: 344px;
+      padding: 28px 26px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    }
+
+    .hospital-side-eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #d4ab76;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .hospital-side-title {
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      line-height: 1.05;
+      font-weight: 600;
+    }
+
+    .hospital-address {
+      margin-top: 16px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.96rem;
+      line-height: 1.68;
+    }
+
+    .hospital-direction {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+      color: #d9b278;
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .hospital-map {
+      position: relative;
+      margin-top: 24px;
+      height: 136px;
+      border-radius: 12px;
+      overflow: hidden;
+      background:
+        linear-gradient(0deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.04)),
+        url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%23eee6db'/%3E%3Cg stroke='%23b8b1a7' stroke-width='4' opacity='0.9'%3E%3Cpath d='M0 110 C140 130 250 80 380 110 S660 170 800 130' fill='none'/%3E%3Cpath d='M30 260 C180 210 260 310 410 280 S650 220 790 290' fill='none'/%3E%3Cpath d='M100 450 C220 390 340 420 470 360 S680 320 820 350' fill='none'/%3E%3Cpath d='M180 0 C200 100 215 190 230 290 S260 420 290 500' fill='none'/%3E%3Cpath d='M420 0 C450 90 470 180 500 250 S560 390 600 500' fill='none'/%3E%3Cpath d='M650 0 C620 90 600 180 570 280 S520 420 490 500' fill='none'/%3E%3C/g%3E%3Cg stroke='%239d968d' stroke-width='2' opacity='0.65'%3E%3Cpath d='M0 60 L800 60'/%3E%3Cpath d='M0 190 L800 190'/%3E%3Cpath d='M0 390 L800 390'/%3E%3Cpath d='M120 0 L120 500'/%3E%3Cpath d='M340 0 L340 500'/%3E%3Cpath d='M720 0 L720 500'/%3E%3C/g%3E%3C/svg%3E\") center center / cover no-repeat;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hospital-map::after {
+      content: \"\";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px 999px 999px 0;
+      background: #d93535;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      box-shadow: 0 10px 18px rgba(217, 53, 53, 0.18);
+    }
+
+    .hospital-map::before {
+      content: \"\";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: #fff;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .video-hub {
+      background: #07192c;
+      padding: 26px 0 28px;
+    }
+
+    .video-shell {
+      width: min(1760px, calc(100% - 34px));
+      margin: 0 auto;
+      padding: 0 44px;
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .video-intro {
+      padding: 12px 4px 0 0;
+      color: #fff;
+    }
+
+    .video-eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #d3ad7c;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .video-heading {
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.1rem, 3.2vw, 3.2rem);
+      line-height: 0.98;
+      font-weight: 600;
+    }
+
+    .video-copy {
+      max-width: 228px;
+      margin-top: 16px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.94rem;
+      line-height: 1.52;
+    }
+
+    .video-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 22px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.02);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .video-card {
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    .video-thumb {
+      position: relative;
+      height: 124px;
+      background-image: linear-gradient(180deg, rgba(8, 20, 38, 0.02) 0%, rgba(8, 20, 38, 0.38) 100%), url('images/media-hub-feature.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .video-time {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.5);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .video-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.08);
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .video-play::before {
+      content: "";
+      margin-left: 4px;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 14px solid #ffffff;
+    }
+
+    .video-card-body {
+      padding: 12px 12px 14px;
+      color: #fff;
+    }
+
+    .video-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      line-height: 1.14;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .social-section {
+      background: #fbf8f3;
+      padding: 54px 0 58px;
+      border-top: 1px solid rgba(18, 23, 31, 0.04);
+    }
+
+    .social-shell {
+      width: min(1760px, calc(100% - 38px));
+      margin: 0 auto;
+      padding: 0 46px;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .social-intro {
+      padding-top: 10px;
+    }
+
+    .social-eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #d1ab77;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .social-heading {
+      color: #101826;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.25rem, 3.6vw, 3.4rem);
+      line-height: 1.02;
+      font-weight: 600;
+    }
+
+    .social-copy {
+      max-width: 224px;
+      margin-top: 14px;
+      color: #4b4a48;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 14px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    .social-icon-chip {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 20px rgba(20, 24, 31, 0.08);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .social-icon-chip.instagram {
+      background: linear-gradient(135deg, #833ab4 0%, #c13584 40%, #fd1d1d 72%, #fcb045 100%);
+    }
+
+    .social-icon-chip.linkedin {
+      background: #0A66C2;
+    }
+
+    .social-icon-chip.facebook {
+      background: #1877F2;
+    }
+
+    .social-icon-chip.youtube {
+      background: #FF2D20;
+    }
+
+    .social-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .social-panel {
+      border-left: 1px solid rgba(18, 23, 31, 0.14);
+      padding-left: 22px;
+    }
+
+    .social-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #101826;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .social-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 172px;
+      gap: 18px;
+      padding: 14px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(18, 23, 31, 0.06);
+      box-shadow: 0 10px 28px rgba(18, 23, 31, 0.04);
+      min-height: 232px;
+    }
+
+    .social-collage {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(2, 1fr);
+      min-height: 100%;
+    }
+
+    .social-tile {
+      border-radius: 8px;
+      background-image: linear-gradient(180deg, rgba(9, 23, 42, 0.06) 0%, rgba(9, 23, 42, 0.24) 100%), url('images/media-hub-feature.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 78px;
+    }
+
+    .social-meta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 6px;
+    }
+
+    .social-handle {
+      color: #1a1f29;
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .social-count {
+      margin-top: 16px;
+      color: #30343b;
+      font-size: 0.96rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 22px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(214, 173, 114, 0.28);
+      background: #fbf5eb;
+      color: #d0aa73;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .testimonials-section {
+      background: #fbf8f3;
+      padding: 34px 0 38px;
+      border-top: 1px solid rgba(18, 23, 31, 0.04);
+      border-bottom: 1px solid rgba(18, 23, 31, 0.04);
+    }
+
+    .testimonials-shell {
+      width: min(1660px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: 0 34px;
+      display: grid;
+      grid-template-columns: 292px minmax(0, 1fr) 50px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .testimonials-intro {
+      position: relative;
+      padding: 6px 44px 0 6px;
+      min-height: 182px;
+    }
+
+    .testimonials-eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #dcc099;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .testimonials-heading {
+      color: #16181d;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.55rem);
+      line-height: 0.98;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .testimonials-copy {
+      max-width: 194px;
+      margin-top: 18px;
+      color: #5f5a52;
+      font-size: 0.95rem;
+      line-height: 1.48;
+      font-weight: 400;
+    }
+
+    .testimonials-prev,
+    .testimonials-next {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid #f1e7d7;
+      background: #fffdf9;
+      color: #e1c493;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      line-height: 1;
+      box-shadow: 0 10px 22px rgba(18, 23, 31, 0.04);
+    }
+
+    .testimonials-prev {
+      position: absolute;
+      right: 0;
+      top: 66px;
+    }
+
+    .testimonials-track {
+      min-width: 0;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .testimonial-card {
+      min-height: 154px;
+      padding: 18px 22px 16px;
+      border-radius: 16px;
+      background: #fffdfa;
+      border: 1px solid rgba(224, 214, 198, 0.58);
+      box-shadow: 0 8px 26px rgba(91, 74, 45, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .testimonial-quote {
+      color: #1b1d21;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-top: 18px;
+    }
+
+    .testimonial-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background-image: url('images/testimonials-avatars-generated.png');
+      background-size: 400% 100%;
+      background-repeat: no-repeat;
+      flex-shrink: 0;
+      box-shadow: 0 8px 14px rgba(18, 23, 31, 0.08);
+    }
+
+    .testimonial-avatar.patient {
+      background-position: 0% 50%;
+    }
+
+    .testimonial-avatar.leader {
+      background-position: 33.333% 50%;
+    }
+
+    .testimonial-avatar.community {
+      background-position: 66.666% 50%;
+    }
+
+    .testimonial-avatar.doctor {
+      background-position: 100% 50%;
+    }
+
+    .testimonial-meta {
+      min-width: 0;
+    }
+
+    .testimonial-name {
+      color: #1b2028;
+      font-size: 0.92rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .testimonial-role {
+      margin-top: 4px;
+      color: #a59e92;
+      font-size: 0.76rem;
+      line-height: 1.2;
+    }
+
+    .testimonials-next {
+      margin-top: 63px;
+    }
+
+    .testimonials-dots {
+      grid-column: 2 / 3;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .testimonials-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(18, 23, 31, 0.1);
+    }
+
+    .testimonials-dot.active {
+      background: #c4aa80;
+    }
+
+
+    .values-strip {
+      background: #06182b;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 30px 0;
+    }
+
+    .values-shell {
+      width: min(1760px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 0 52px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      align-items: center;
+    }
+
+    .value-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 96px;
+      padding: 0 28px;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .value-item:first-child {
+      padding-left: 6px;
+    }
+
+    .value-item:last-child {
+      border-right: 0;
+      padding-right: 6px;
+    }
+
+    .value-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 999px;
+      border: 2px solid rgba(197, 151, 89, 0.52);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #c59659;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.02);
+    }
+
+    .value-icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .value-title {
+      color: #ffffff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      line-height: 1.15;
+      font-weight: 600;
+    }
+
+    @keyframes wheel {
+      0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(12px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.3;
+      }
+    }
+
+    @media (max-width: 1280px) {
+      .nav-shell,
+      .hero-inner,
+      .section-shell {
+        width: min(100% - 40px, 1400px);
+      }
+
+      .footer-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px 0;
+      }
+
+      .footer-column:nth-child(3) {
+        border-left: 0;
+        padding-left: 26px;
+      }
+
+      .testimonials-shell {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .testimonials-intro {
+        min-height: 0;
+        padding: 6px 64px 0 6px;
+      }
+
+      .testimonials-prev {
+        right: 6px;
+      }
+
+      .testimonials-track,
+      .testimonials-dots {
+        grid-column: auto;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .testimonials-next {
+        display: none;
+      }
+
+      .nav-links {
+        gap: 28px;
+      }
+
+      .hero-inner {
+        padding: 0 72px;
+      }
+
+      .press-shell {
+        width: min(100% - 40px, 1400px);
+      }
+
+      .press-row {
+        grid-template-columns: 160px 1fr;
+      }
+
+      .press-controls {
+        display: none;
+      }
+
+      .press-logos {
+        gap: 20px;
+      }
+
+      .journey-shell {
+        width: min(100% - 40px, 1500px);
+        padding: 0 40px;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .impact-shell {
+        width: min(100% - 40px, 1500px);
+        padding: 0 40px;
+      }
+
+      .impact-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .impact-item:nth-child(3) {
+        border-right: 0;
+      }
+
+      .news-shell {
+        width: min(100% - 40px, 1500px);
+        padding: 0 40px;
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .news-copy {
+        max-width: 540px;
+      }
+
+      .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .news-controls {
+        display: none;
+      }
+
+      .hospital-shell {
+        width: min(100% - 40px, 1500px);
+        padding: 0 40px;
+        grid-template-columns: 1fr;
+      }
+
+      .hospital-body {
+        padding-right: 0;
+      }
+
+      .video-shell {
+        width: min(100% - 40px, 1500px);
+        padding: 0 40px;
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .video-copy {
+        max-width: 520px;
+      }
+
+      .video-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .social-shell {
+        width: min(100% - 40px, 1500px);
+        padding: 0 40px;
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .social-copy {
+        max-width: 520px;
+      }
+
+      .values-shell {
+        width: min(100% - 40px, 1500px);
+        padding: 0 40px;
+      }
+
+      .values-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .value-item:nth-child(3) {
+        border-right: 0;
+      }
+
+      .journey-copy {
+        max-width: 620px;
+      }
+
+      .journey-cards {
+        grid-template-columns: repeat(3, minmax(170px, 1fr));
+      }
+
+      .journey-track {
+        display: none;
+      }
+
+      .journey-card-wrap {
+        padding-top: 0;
+      }
+
+      .journey-node {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 0 auto 14px;
+        box-shadow: none;
+      }
+
+      .hero-description {
+        max-width: 430px;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .testimonials-section {
+        padding: 30px 0 34px;
+      }
+
+      .testimonials-shell {
+        width: calc(100% - 28px);
+        padding: 0 14px;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-panel {
+        grid-template-columns: 1fr;
+        padding: 24px 0 18px;
+      }
+
+      .footer-column {
+        padding: 0 18px 20px;
+        border-left: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-column:first-child {
+        padding-left: 18px;
+      }
+
+      .footer-column:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .nav-shell {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 18px;
+      }
+
+      .logo,
+      .cta-btn {
+        justify-self: center;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-copy {
+        max-width: none;
+        padding: 174px 0 40px;
+      }
+
+      .hero-description {
+        max-width: 620px;
+      }
+
+      .press-row {
+        grid-template-columns: 1fr;
+        padding: 22px 0;
+      }
+
+      .press-label {
+        text-align: center;
+      }
+
+      .press-logos {
+        grid-template-columns: repeat(2, minmax(160px, 1fr));
+        gap: 18px 14px;
+      }
+
+      .journey-cards {
+        grid-template-columns: repeat(2, minmax(170px, 1fr));
+      }
+
+      .impact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .impact-item:nth-child(2),
+      .impact-item:nth-child(4) {
+        border-right: 0;
+      }
+
+      .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hospital-points {
+        grid-template-columns: 1fr;
+      }
+
+      .video-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .social-panels {
+        grid-template-columns: 1fr;
+      }
+
+      .values-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .value-item:nth-child(2),
+      .value-item:nth-child(4) {
+        border-right: 0;
+      }
+
+      .hero-visual {
+        min-height: 680px;
+      }
+
+      .portrait-wrap {
+        position: relative;
+        right: auto;
+        height: min(78vh, 760px);
+        justify-content: center;
+      }
+
+      .portrait-glow {
+        right: 50%;
+        bottom: 12%;
+        transform: translateX(50%);
+      }
+
+      .scroll-indicator {
+        right: 26px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      #navbar {
+        padding: 12px 0;
+      }
+
+      #navbar.scrolled,
+      #navbar.menu-open {
+        background: rgba(5, 10, 20, 0.92);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .testimonials-intro {
+        padding-right: 58px;
+      }
+
+      .testimonials-heading {
+        font-size: clamp(2rem, 10vw, 2.5rem);
+      }
+
+      .testimonials-copy {
+        max-width: 240px;
+      }
+
+      .testimonial-card {
+        padding: 16px 18px 15px;
+      }
+
+      .testimonial-quote {
+        font-size: 0.92rem;
+      }
+
+      #navbar {
+        padding: 14px 0;
+      }
+
+      .nav-shell,
+      .hero-inner,
+      .section-shell {
+        width: calc(100% - 28px);
+      }
+
+      .nav-shell {
+        grid-template-columns: 1fr auto;
+        justify-items: stretch;
+        gap: 16px;
+        padding: 0 10px;
+      }
+
+      .logo {
+        justify-self: start;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        justify-self: end;
+        flex-direction: column;
+      }
+
+      .nav-links,
+      .nav-shell > .cta-btn {
+        display: none;
+      }
+
+      .mobile-nav-panel {
+        display: grid;
+        grid-column: 1 / -1;
+        gap: 18px;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height .38s ease, opacity .28s ease, padding .28s ease, margin-top .28s ease;
+        margin-top: 0;
+        border-radius: 22px;
+        background: rgba(9, 18, 31, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.26);
+      }
+
+      #navbar.menu-open .mobile-nav-panel {
+        max-height: 80vh;
+        opacity: 1;
+        pointer-events: auto;
+        padding: 18px;
+        margin-top: 8px;
+      }
+
+      #navbar.menu-open .nav-toggle-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      #navbar.menu-open .nav-toggle-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      #navbar.menu-open .nav-toggle-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-nav-links {
+        display: grid;
+        gap: 8px;
+      }
+
+      .mobile-nav-links a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 50px;
+        padding: 0 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      .mobile-nav-links a::after {
+        content: "\2192";
+        color: var(--accent);
+        font-size: 1rem;
+      }
+
+      .mobile-nav-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .mobile-nav-socials {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .mobile-nav-social {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+
+      .mobile-nav-social svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      .section-shell {
+        padding: 0 14px;
+      }
+
+      .footer-signature {
+        width: 184px;
+      }
+
+      .footer-links-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 14px;
+      }
+
+      .footer-newsletter {
+        max-width: none;
+      }
+
+      .footer-cta {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .press-shell {
+        width: calc(100% - 28px);
+        padding: 0 10px;
+      }
+
+      .hero {
+        min-height: auto;
+        background-position: 64% center;
+      }
+
+      .hero-copy {
+        padding: 162px 0 24px;
+      }
+
+      .hero-inner {
+        padding: 0 26px;
+      }
+
+      .hero-kicker {
+        font-size: 0.62rem;
+        line-height: 1.6;
+      }
+
+      .hero-title {
+        font-size: clamp(2.85rem, 12vw, 4.35rem);
+        letter-spacing: -1.6px;
+      }
+
+      .hero-description {
+        font-size: 0.94rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+
+      .hero-btn {
+        min-width: 100%;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+      }
+
+      .stat {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+      }
+
+      .portrait-wrap {
+        height: 58vh;
+      }
+
+      .scroll-indicator {
+        display: none;
+      }
+
+      .section-card {
+        padding: 28px 22px;
+      }
+
+      .press-row {
+        min-height: auto;
+        gap: 14px;
+      }
+
+      .press-logos {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+      }
+
+      .press-logo img.news18-logo {
+        max-height: 54px;
+      }
+
+      .journey-section {
+        padding: 72px 0 64px;
+      }
+
+      .journey-shell {
+        width: calc(100% - 28px);
+        padding: 0 14px;
+      }
+
+      .impact-strip {
+        padding: 20px 0 22px;
+      }
+
+      .impact-shell {
+        width: calc(100% - 28px);
+        padding: 0 14px;
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .impact-item {
+        min-height: auto;
+        padding: 18px 6px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      }
+
+      .impact-item:first-child,
+      .impact-item:last-child {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+
+      .impact-item:last-child {
+        border-bottom: 0;
+      }
+
+      .impact-icon {
+        width: 54px;
+        height: 54px;
+      }
+
+      .impact-icon svg {
+        width: 48px;
+        height: 48px;
+      }
+
+      .impact-value {
+        font-size: 2.5rem;
+      }
+
+      .impact-label {
+        font-size: 0.86rem;
+      }
+
+      .news-section {
+        padding: 58px 0 54px;
+      }
+
+      .news-shell {
+        width: calc(100% - 28px);
+        padding: 0 14px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .news-heading {
+        font-size: clamp(2.25rem, 10vw, 3rem);
+      }
+
+      .news-copy {
+        max-width: none;
+        font-size: 0.92rem;
+      }
+
+      .hospital-feature {
+        padding: 20px 0 24px;
+      }
+
+      .hospital-shell {
+        width: calc(100% - 28px);
+        padding: 0 14px;
+        gap: 20px;
+      }
+
+      .hospital-visual,
+      .hospital-side {
+        min-height: auto;
+      }
+
+      .hospital-visual {
+        min-height: 240px;
+      }
+
+      .hospital-play {
+        width: 82px;
+        height: 82px;
+      }
+
+      .hospital-play::before {
+        border-top-width: 14px;
+        border-bottom-width: 14px;
+        border-left-width: 22px;
+      }
+
+      .hospital-title {
+        font-size: clamp(2.2rem, 10vw, 3rem);
+      }
+
+      .hospital-copy {
+        font-size: 0.92rem;
+      }
+
+      .hospital-side {
+        padding: 22px 18px;
+      }
+
+      .hospital-side-title {
+        font-size: 1.45rem;
+      }
+
+      .video-hub {
+        padding: 18px 0 22px;
+      }
+
+      .video-shell {
+        width: calc(100% - 28px);
+        padding: 0 14px;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-heading {
+        font-size: clamp(2rem, 9vw, 2.7rem);
+      }
+
+      .video-copy {
+        max-width: none;
+        font-size: 0.9rem;
+      }
+
+      .social-section {
+        padding: 46px 0 50px;
+      }
+
+      .social-shell {
+        width: calc(100% - 28px);
+        padding: 0 14px;
+      }
+
+      .social-heading {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+      }
+
+      .social-copy {
+        max-width: none;
+      }
+
+      .social-card {
+        grid-template-columns: 1fr;
+      }
+
+      .social-panel {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .social-meta {
+        padding-right: 0;
+      }
+
+      .values-strip {
+        padding: 18px 0 20px;
+      }
+
+      .values-shell {
+        width: calc(100% - 28px);
+        padding: 0 14px;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .value-item {
+        min-height: auto;
+        padding: 16px 4px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .value-item:first-child,
+      .value-item:last-child {
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      .value-item:last-child {
+        border-bottom: 0;
+      }
+
+      .value-icon {
+        width: 54px;
+        height: 54px;
+      }
+
+      .value-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .value-title {
+        font-size: 1rem;
+      }
+
+      .journey-heading {
+        font-size: clamp(2.45rem, 11vw, 3.5rem);
+      }
+
+      .journey-copy {
+        font-size: 0.97rem;
+      }
+
+      .journey-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-card {
+        min-height: 340px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-shell {
+        gap: 14px;
+      }
+
+      .logo {
+        gap: 10px;
+      }
+
+      .logo-icon {
+        font-size: 2.35rem;
+      }
+
+      .logo-text span {
+        font-size: 0.72rem;
+      }
+
+      .nav-links {
+        gap: 10px 16px;
+      }
+
+      .nav-links a {
+        font-size: 0.84rem;
+      }
+
+      .cta-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 22px;
+      }
+
+      .hero {
+        background:
+          linear-gradient(180deg, rgba(5, 10, 20, 0.94) 0%, rgba(5, 10, 20, 0.86) 32%, rgba(5, 10, 20, 0.64) 58%, rgba(5, 10, 20, 0.4) 100%),
+          radial-gradient(circle at 26% 50%, rgba(200, 164, 109, 0.08) 0%, rgba(200, 164, 109, 0) 35%),
+          url("images/hero-bg.png") 62% center / cover no-repeat;
+      }
+
+      .hero-inner {
+        padding: 0 16px;
+      }
+
+      .hero-copy {
+        padding: 150px 0 18px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.35rem, 12.5vw, 3.2rem);
+        line-height: 0.92;
+        letter-spacing: -1px;
+      }
+
+      .hero-description {
+        max-width: none;
+        font-size: 0.9rem;
+      }
+
+      .hero-btn {
+        padding: 15px 18px;
+        font-size: 0.94rem;
+      }
+
+      .stat {
+        gap: 12px;
+        padding: 12px 0;
+      }
+
+      .stat-icon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .stat-value {
+        font-size: 1.18rem;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+      }
+
+      .portrait-wrap {
+        height: 44vh;
+        min-height: 300px;
+        justify-content: center;
+      }
+
+      .portrait-glow {
+        width: min(62vw, 280px);
+        height: min(62vw, 280px);
+        bottom: 14%;
+      }
+
+      .press-row {
+        padding: 18px 0;
+      }
+
+      .press-label {
+        font-size: 0.72rem;
+      }
+
+      .press-logos {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .journey-section,
+      .news-section,
+      .social-section {
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+
+      .journey-btn,
+      .news-btn,
+      .hospital-btn,
+      .video-btn,
+      .social-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .journey-node {
+        width: 40px;
+        height: 40px;
+      }
+
+      .journey-card {
+        min-height: 310px;
+        grid-template-rows: minmax(0, 1fr) 92px;
+      }
+
+      .journey-card-body {
+        padding: 22px 18px 18px;
+      }
+
+      .journey-card-image {
+        min-height: 92px;
+      }
+
+      .impact-item {
+        gap: 12px;
+      }
+
+      .news-card-top,
+      .video-thumb {
+        height: 190px;
+      }
+
+      .hospital-shell,
+      .video-shell,
+      .social-shell,
+      .values-shell,
+      .testimonials-shell,
+      .journey-shell,
+      .impact-shell,
+      .news-shell,
+      .press-shell {
+        width: calc(100% - 20px);
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .hospital-visual {
+        min-height: 220px;
+      }
+
+      .hospital-body,
+      .hospital-side {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .hospital-points {
+        gap: 12px;
+      }
+
+      .hospital-point,
+      .hospital-address,
+      .hospital-copy {
+        font-size: 0.9rem;
+      }
+
+      .hospital-direction {
+        display: inline-flex;
+        margin-top: 16px;
+      }
+
+      .video-card,
+      .news-card,
+      .social-card,
+      .testimonial-card,
+      .hospital-visual,
+      .hospital-side {
+        border-radius: 14px;
+      }
+
+      .social-icons {
+        gap: 10px;
+      }
+
+      .social-icon-chip {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+      }
+
+      .social-card {
+        padding: 12px;
+        min-height: 0;
+      }
+
+      .social-collage {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .social-tile {
+        min-height: 96px;
+      }
+
+      .testimonials-section {
+        padding: 26px 0 30px;
+      }
+
+      .testimonials-intro {
+        padding-right: 52px;
+      }
+
+      .testimonials-prev {
+        top: 58px;
+        width: 38px;
+        height: 38px;
+      }
+
+      .testimonial-card {
+        min-height: 0;
+      }
+
+      .testimonial-quote {
+        font-size: 0.9rem;
+      }
+
+      .values-strip {
+        padding: 16px 0 18px;
+      }
+
+      .value-item {
+        gap: 14px;
+      }
+
+      .value-title {
+        font-size: 0.96rem;
+      }
+
+      .footer-panel {
+        gap: 18px 0;
+        padding: 18px 0 12px;
+      }
+
+      .footer-column {
+        padding: 0 10px 18px;
+      }
+
+      .footer-column:first-child {
+        padding-left: 10px;
+      }
+
+      .footer-copy,
+      .footer-note,
+      .footer-news-copy,
+      .footer-link,
+      .footer-contact-item {
+        font-size: 0.88rem;
+      }
+
+      .footer-links-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .footer-newsletter {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-copy {
+        padding-top: 142px;
+      }
+
+      .hero-kicker {
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+      }
+
+      .hero-title {
+        font-size: clamp(2.05rem, 11.5vw, 2.6rem);
+      }
+
+      .hero-visual {
+        min-height: 310px;
+      }
+
+      .portrait-wrap {
+        height: 38vh;
+        min-height: 250px;
+      }
+
+      .press-logos {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-heading,
+      .news-heading,
+      .hospital-title,
+      .social-heading,
+      .video-heading,
+      .testimonials-heading {
+        word-break: break-word;
+      }
+
+      .journey-card {
+        min-height: 286px;
+      }
+
+      .news-card-top,
+      .video-thumb,
+      .hospital-visual {
+        height: 170px;
+        min-height: 170px;
+      }
+
+      .hospital-play {
+        width: 68px;
+        height: 68px;
+      }
+
+      .footer-title {
+        font-size: 0.76rem;
+      }
+
+      .footer-signature {
+        width: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="navbar">
+    <div class="nav-shell">
+      <a href="#home" class="logo">
+        <div class="logo-icon">MS</div>
+        <div class="logo-text">
+          <span>MOHAMMAD</span>
+          <span>SAAD</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#journey">Journey</a>
+        <a href="#hospital">MR Hospital</a>
+        <a href="#media">Media</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#contact" class="cta-btn">
+        Let's Connect
+        <span>&rarr;</span>
+      </a>
+
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNavPanel">
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+        <span class="nav-toggle-line"></span>
+      </button>
+
+      <div class="mobile-nav-panel" id="mobileNavPanel">
+        <nav class="mobile-nav-links" aria-label="Mobile navigation">
+          <a href="#home">Home</a>
+          <a href="#journey">Journey</a>
+          <a href="#hospital">MR Hospital</a>
+          <a href="#media">Media</a>
+          <a href="#insights">Insights</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#contact" class="cta-btn mobile-nav-cta">
+          Let's Connect
+          <span>&rarr;</span>
+        </a>
+
+        <div class="mobile-nav-socials" aria-label="Social links">
+          <a href="#insights" class="mobile-nav-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.5" cy="6.5" r="1.2"></circle>
+            </svg>
+          </a>
+          <a href="#insights" class="mobile-nav-social" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24">
+              <path d="M6.7 8.6H3.9V20h2.8zM5.3 3A1.7 1.7 0 1 0 5.3 6.4 1.7 1.7 0 0 0 5.3 3Zm14.8 8.9c0-2.8-1.5-4.1-3.5-4.1-1.6 0-2.3.9-2.7 1.5V8.6h-2.8V20h2.8v-6.1c0-.3 0-.6.1-.8.2-.6.8-1.3 1.8-1.3 1.2 0 1.8.9 1.8 2.3V20h2.8z"></path>
+            </svg>
+          </a>
+          <a href="#insights" class="mobile-nav-social" aria-label="Facebook">
+            <svg viewBox="0 0 24 24">
+              <path d="M13.5 21v-7h2.3l.3-2.7h-2.6V9.6c0-.8.2-1.3 1.4-1.3H16V5.9c-.6-.1-1.3-.1-1.9-.1-1.9 0-3.3 1.2-3.3 3.4v2.1H8.5V14h2.3v7z"></path>
+            </svg>
+          </a>
+          <a href="#media" class="mobile-nav-social" aria-label="YouTube">
+            <svg viewBox="0 0 24 24">
+              <path d="M21.6 7.7a2.8 2.8 0 0 0-2-2c-1.8-.5-7.6-.5-7.6-.5s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A28.4 28.4 0 0 0 2 12a28.4 28.4 0 0 0 .4 4.3 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A28.4 28.4 0 0 0 22 12a28.4 28.4 0 0 0-.4-4.3ZM10 15.2V8.8l5.2 3.2Z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="hero-kicker">Entrepreneur • Healthcare Leader • Institution Builder</p>
+
+          <h1 class="hero-title">
+            <span class="hero-title-line"><span>A DREAM.</span></span>
+            <span class="hero-title-line"><span class="gold">A JOURNEY.</span></span>
+            <span class="hero-title-line"><span>A LEGACY.</span></span>
+          </h1>
+
+          <p class="hero-description">
+            From the heart of Bihar to building institutions that create impact and inspire generations.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#journey" class="hero-btn hero-btn-primary">
+              <span>&#9654;</span>
+              <span>Watch My Journey</span>
+            </a>
+
+            <a href="#insights" class="hero-btn hero-btn-secondary">
+              Explore My Vision
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-icon instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17.5" cy="6.5" r="1"></circle>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-value">48K+</div>
+                <div class="stat-label">Followers</div>
+              </div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-icon linkedin">
+                <svg viewBox="0 0 24 24" fill="white">
+                  <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.97 1.97 0 0 0 3.3 4.97c0 1.08.87 1.97 1.95 1.97 1.08 0 1.95-.89 1.95-1.97C7.2 3.9 6.33 3 5.25 3Zm14.75 9.83c0-3.17-1.69-4.64-3.95-4.64-1.82 0-2.63 1-3.08 1.7V8.5H9.6c.05.93 0 11.5 0 11.5h3.37v-6.42c0-.34.02-.68.13-.92.28-.68.93-1.38 2.02-1.38 1.42 0 1.99 1.04 1.99 2.57V20h3.38v-7.17Z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-value">32K+</div>
+                <div class="stat-label">Connections</div>
+              </div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-icon youtube">
+                <svg viewBox="0 0 24 24" fill="white">
+                  <path d="M21.58 7.19a2.99 2.99 0 0 0-2.1-2.11C17.62 4.5 12 4.5 12 4.5s-5.62 0-7.48.58a2.99 2.99 0 0 0-2.1 2.11A31.7 31.7 0 0 0 1.83 12c0 1.63.2 3.27.59 4.81a2.99 2.99 0 0 0 2.1 2.11c1.86.58 7.48.58 7.48.58s5.62 0 7.48-.58a2.99 2.99 0 0 0 2.1-2.11c.39-1.54.59-3.18.59-4.81 0-1.63-.2-3.27-.59-4.81ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-value">12K+</div>
+                <div class="stat-label">Subscribers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="portrait-glow"></div>
+
+          <div class="portrait-wrap" id="portraitWrap">
+            <img src="images/mohammad-saad.png" alt="Mohammad Saad portrait" class="portrait">
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span class="scroll-text">Scroll to Explore</span>
+        <span class="scroll-mouse" aria-hidden="true"></span>
+      </div>
+
+    </section>
+
+    <section class="press-strip" aria-label="As seen in">
+      <div class="press-shell">
+        <div class="press-row">
+          <div class="press-label">As Seen In</div>
+
+          <div class="press-logos">
+            <div class="press-logo">
+              <img src="images/news18-demo.png" alt="News18 Hindi" class="news18-logo">
+            </div>
+
+            <div class="press-logo">
+              <img src="images/news18-demo.png" alt="News18 Hindi" class="news18-logo">
+            </div>
+
+            <div class="press-logo">
+              <img src="images/news18-demo.png" alt="News18 Hindi" class="news18-logo">
+            </div>
+
+            <div class="press-logo">
+              <img src="images/news18-demo.png" alt="News18 Hindi" class="news18-logo">
+            </div>
+
+            <div class="press-logo">
+              <img src="images/news18-demo.png" alt="News18 Hindi" class="news18-logo">
+            </div>
+
+            <div class="press-logo">
+              <img src="images/news18-demo.png" alt="News18 Hindi" class="news18-logo">
+            </div>
+          </div>
+
+          <div class="press-controls">
+            <button type="button" class="press-arrow" id="pressPrev" aria-label="Show previous logos">&#8249;</button>
+            <button type="button" class="press-arrow" id="pressNext" aria-label="Show next logos">&#8250;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="journey-section">
+      <div class="journey-shell">
+        <div class="journey-intro">
+          <span class="journey-eyebrow">My Journey</span>
+          <h2 class="journey-heading">
+            The Journey of
+            <br>
+            Dream, <span class="accent">Discipline</span>
+            <br>
+            &amp; Determination.
+          </h2>
+          <p class="journey-copy">
+            A path shaped by experiences, failures, learning and unwavering belief.
+          </p>
+          <a href="#hospital" class="journey-btn">
+            <span>Explore Full Journey</span>
+            <span class="arrow">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="journey-timeline">
+          <div class="journey-track"></div>
+
+          <div class="journey-cards">
+            <article class="journey-card-wrap">
+              <div class="journey-node" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 18h16"></path>
+                  <path d="M6 18V8"></path>
+                  <path d="M12 18V6"></path>
+                  <path d="M18 18V10"></path>
+                </svg>
+              </div>
+              <div class="journey-card">
+                <div class="journey-card-body">
+                  <div class="journey-number">01</div>
+                  <h3 class="journey-card-title">The Roots</h3>
+                  <div class="journey-card-lines">
+                    <div><strong>Bihar</strong></div>
+                    <div>Dreams</div>
+                    <div>begin here.</div>
+                  </div>
+                </div>
+                <div class="journey-card-image" style="background-image: url('images/journey-roots.png');"></div>
+              </div>
+            </article>
+
+            <article class="journey-card-wrap">
+              <div class="journey-node" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3 11.5 12 16l9-4.5L12 7z"></path>
+                  <path d="M7.5 13.8V17"></path>
+                  <path d="M16.5 13.8V17"></path>
+                </svg>
+              </div>
+              <div class="journey-card">
+                <div class="journey-card-body">
+                  <div class="journey-number">02</div>
+                  <h3 class="journey-card-title">The Learning</h3>
+                  <div class="journey-card-lines">
+                    <div><strong>Saudi Arabia</strong></div>
+                    <div><strong>ARADER</strong></div>
+                    <div>Exposure.</div>
+                    <div>Systems.</div>
+                    <div>Discipline.</div>
+                  </div>
+                </div>
+                <div class="journey-card-image" style="background-image: url('images/journey-learning.png');"></div>
+              </div>
+            </article>
+
+            <article class="journey-card-wrap">
+              <div class="journey-node" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 19 19 5"></path>
+                  <path d="M9 5h10v10"></path>
+                </svg>
+              </div>
+              <div class="journey-card">
+                <div class="journey-card-body">
+                  <div class="journey-number">03</div>
+                  <h3 class="journey-card-title">The Decision</h3>
+                  <div class="journey-card-lines">
+                    <div><strong>Returning Home</strong></div>
+                    <div>A decision to</div>
+                    <div>build, not just</div>
+                    <div>earn.</div>
+                  </div>
+                </div>
+                <div class="journey-card-image" style="background-image: url('images/journey-decision.png');"></div>
+              </div>
+            </article>
+
+            <article class="journey-card-wrap">
+              <div class="journey-node" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 19h16"></path>
+                  <path d="M6 19V8"></path>
+                  <path d="M12 19V5"></path>
+                  <path d="M18 19V11"></path>
+                </svg>
+              </div>
+              <div class="journey-card">
+                <div class="journey-card-body">
+                  <div class="journey-number">04</div>
+                  <h3 class="journey-card-title">The Entrepreneur</h3>
+                  <div class="journey-card-lines">
+                    <div><strong>Building Ventures</strong></div>
+                    <div>Creating</div>
+                    <div>opportunities.</div>
+                    <div>Learning</div>
+                    <div>leadership.</div>
+                  </div>
+                </div>
+                <div class="journey-card-image" style="background-image: url('images/journey-entrepreneur.png');"></div>
+              </div>
+            </article>
+
+            <article class="journey-card-wrap">
+              <div class="journey-node" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 20V8l7-4 7 4v12"></path>
+                  <path d="M9 20v-6h6v6"></path>
+                </svg>
+              </div>
+              <div class="journey-card">
+                <div class="journey-card-body">
+                  <div class="journey-number">05</div>
+                  <h3 class="journey-card-title">The Institution</h3>
+                  <div class="journey-card-lines">
+                    <div><strong>MR Hospital</strong></div>
+                    <div>Vision</div>
+                    <div>transformed</div>
+                    <div>into reality.</div>
+                  </div>
+                </div>
+                <div class="journey-card-image" style="background-image: url('images/journey-institution.png');"></div>
+              </div>
+            </article>
+
+            <article class="journey-card-wrap">
+              <div class="journey-node" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="7"></circle>
+                  <path d="M12 8v4l3 2"></path>
+                </svg>
+              </div>
+              <div class="journey-card">
+                <div class="journey-card-body">
+                  <div class="journey-number">06</div>
+                  <h3 class="journey-card-title">The Future</h3>
+                  <div class="journey-card-lines">
+                    <div><strong>Beyond Business</strong></div>
+                    <div>Creating impact</div>
+                    <div>that outlives</div>
+                    <div>success.</div>
+                  </div>
+                </div>
+                <div class="journey-card-image" style="background-image: url('images/journey-future.png');"></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact-strip" aria-label="Impact highlights">
+      <div class="impact-shell">
+        <div class="impact-grid">
+          <article class="impact-item">
+            <div class="impact-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <circle cx="32" cy="21" r="12"></circle>
+                <path d="M22 33 17 56l15-8 15 8-5-23"></path>
+                <path d="M26 21l4 4 8-9"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="impact-value">10+</div>
+              <div class="impact-label">Years of<br>Experience</div>
+            </div>
+          </article>
+
+          <article class="impact-item">
+            <div class="impact-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <circle cx="21" cy="22" r="7"></circle>
+                <circle cx="43" cy="22" r="7"></circle>
+                <circle cx="32" cy="15" r="7"></circle>
+                <path d="M12 44c2-6 8-10 14-10s12 4 14 10"></path>
+                <path d="M28 44c2-7 8-12 16-12 4 0 8 1 11 4"></path>
+                <path d="M9 48c2-5 7-8 12-8 3 0 5 1 8 2"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="impact-value">1000+</div>
+              <div class="impact-label">Lives<br>Impacted</div>
+            </div>
+          </article>
+
+          <article class="impact-item">
+            <div class="impact-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <path d="M10 34V24l28-6v28l-28-6V34Z"></path>
+                <path d="M38 27l10-8v26l-10-8"></path>
+                <path d="M15 42v7"></path>
+                <path d="M21 43v9"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="impact-value">50+</div>
+              <div class="impact-label">Media<br>Mentions</div>
+            </div>
+          </article>
+
+          <article class="impact-item">
+            <div class="impact-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <path d="M16 50V18h32v32"></path>
+                <path d="M22 50V26h8v24"></path>
+                <path d="M34 50V12h8v38"></path>
+                <path d="M12 54h40"></path>
+                <path d="M22 18h8"></path>
+                <path d="M34 18h8"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="impact-value">1</div>
+              <div class="impact-label">Healthcare<br>Institution</div>
+            </div>
+          </article>
+
+          <article class="impact-item">
+            <div class="impact-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <path d="M12 39c18-2 27-11 40-27 1 12-1 22-10 31-7 7-16 10-26 11"></path>
+                <path d="M24 40 14 50"></path>
+                <path d="M35 21c2 2 5 5 7 7"></path>
+                <path d="M18 32c4 1 8 5 9 9"></path>
+              </svg>
+            </div>
+            <div>
+              <div class="impact-value" style="font-size: 2rem; line-height: 1;">Multiple</div>
+              <div class="impact-label">Ventures<br>&amp; Initiatives</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="news-section" id="media">
+      <div class="news-shell">
+        <div class="news-intro">
+          <span class="news-eyebrow">In The News</span>
+          <h2 class="news-heading">Stories Beyond<br>Headlines</h2>
+          <p class="news-copy">
+            20+ articles and features covering the journey, vision and impact.
+          </p>
+          <a href="#contact" class="news-btn">
+            <span>View All Articles</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-card-top" style="background-image: url('images/mohammad-saad.png'); background-position: center top;">
+              <div class="news-badge-row">
+                <span class="news-badge">Featured</span>
+                <span class="news-card-top-icon">&#9675;</span>
+              </div>
+            </div>
+            <div class="news-card-body">
+              <div class="news-source">दैनिक भास्कर</div>
+              <h3 class="news-title">How Mohammad Saad Is Transforming Healthcare in Bihar</h3>
+              <div class="news-date">May 12, 2024</div>
+              <a href="#contact" class="news-link">Read Article <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card-top" style="background-image: url('images/journey-entrepreneur.png'); background-position: center 24%;">
+              <div class="news-badge-row">
+                <span class="news-badge brand dark">NEWS18</span>
+                <span class="news-card-top-icon">&#9675;</span>
+              </div>
+            </div>
+            <div class="news-card-body">
+              <div class="news-source">news18</div>
+              <h3 class="news-title">Interview With Mohammad Saad: Vision for Bihar</h3>
+              <div class="news-date">April 28, 2024</div>
+              <a href="#contact" class="news-link">Read Article <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card-top" style="background-image: url('images/journey-entrepreneur.png'); background-position: center top;">
+              <div class="news-badge-row">
+                <span class="news-badge brand dark">प्रभात खबर</span>
+                <span class="news-card-top-icon">&#9675;</span>
+              </div>
+            </div>
+            <div class="news-card-body">
+              <div class="news-source">प्रभात खबर</div>
+              <h3 class="news-title">Healthcare Leadership and Entrepreneurship Journey</h3>
+              <div class="news-date">April 10, 2024</div>
+              <a href="#contact" class="news-link">Read Article <span>&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-card-top" style="background-image: url('images/journey-institution.png'); background-position: center 38%;">
+              <div class="news-badge-row">
+                <span class="news-badge brand">Hindustan</span>
+                <span class="news-card-top-icon">&#9675;</span>
+              </div>
+            </div>
+            <div class="news-card-body">
+              <div class="news-source">Hindustan</div>
+              <h3 class="news-title">MR Hospital: Setting New Standards in Patient Care</h3>
+              <div class="news-date">March 14, 2024</div>
+              <a href="#contact" class="news-link">Read Article <span>&rarr;</span></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="news-controls" aria-hidden="true">
+          <span class="news-arrow">&#8250;</span>
+          <span class="news-arrow">&#8250;</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="hospital" class="hospital-feature">
+      <div class="hospital-shell">
+        <div class="hospital-visual">
+          <div class="hospital-visual-image"></div>
+          <div class="hospital-play" aria-hidden="true"></div>
+        </div>
+
+        <div class="hospital-body">
+          <span class="hospital-eyebrow">Founder Of</span>
+          <h2 class="hospital-title">MR HOSPITAL</h2>
+
+          <div class="hospital-location">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"></path>
+              <circle cx="12" cy="11" r="2.3"></circle>
+            </svg>
+            <span>Patna, Bihar</span>
+          </div>
+
+          <p class="hospital-copy">
+            A vision to bring world-class healthcare closer to every individual with compassion, trust and advanced technology.
+          </p>
+
+          <div class="hospital-points">
+            <div class="hospital-point">
+              <svg viewBox="0 0 24 24">
+                <path d="m14 4-8 8"></path>
+                <path d="m10 4 4 0 0 4"></path>
+                <path d="m7 21 5-5"></path>
+                <path d="m4 14 0 6 6 0"></path>
+              </svg>
+              <span>24x7 Emergency Care</span>
+            </div>
+
+            <div class="hospital-point">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="7" r="3"></circle>
+                <path d="M5 21a7 7 0 0 1 14 0"></path>
+              </svg>
+              <span>Experienced Doctors</span>
+            </div>
+
+            <div class="hospital-point">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 19V8l6-3 6 3v11"></path>
+                <path d="M9 19v-4h6v4"></path>
+              </svg>
+              <span>Critical &amp; ICU Care</span>
+            </div>
+
+            <div class="hospital-point">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 19h16"></path>
+                <path d="M7 19V8h10v11"></path>
+                <path d="M10 11h4"></path>
+                <path d="M10 14h4"></path>
+              </svg>
+              <span>Modern Infrastructure</span>
+            </div>
+
+            <div class="hospital-point">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="6"></circle>
+                <path d="m20 20-4.2-4.2"></path>
+              </svg>
+              <span>Advanced Diagnostics</span>
+            </div>
+
+            <div class="hospital-point">
+              <svg viewBox="0 0 24 24">
+                <circle cx="8" cy="8" r="3"></circle>
+                <circle cx="16" cy="16" r="3"></circle>
+                <path d="M10.5 10.5 13.5 13.5"></path>
+              </svg>
+              <span>Patient First Approach</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="hospital-btn">
+            <span>Explore MR Hospital</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <aside class="hospital-side">
+          <span class="hospital-side-eyebrow">Our Location</span>
+          <h3 class="hospital-side-title">MR Hospital</h3>
+          <p class="hospital-address">
+            Pillar No. 76, Bailey Road,<br>
+            Raja Bazar, Patna,<br>
+            Bihar 800014
+          </p>
+          <a href="#contact" class="hospital-direction">
+            <span>Get Directions</span>
+            <span>&rarr;</span>
+          </a>
+          <div class="hospital-map" aria-hidden="true"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="media" class="video-hub">
+      <div class="video-shell">
+        <div class="video-intro">
+          <span class="video-eyebrow">Media Hub</span>
+          <h2 class="video-heading">Watch &amp; Learn</h2>
+          <p class="video-copy">
+            Interviews, podcasts, talks and conversations that share ideas, experiences and insights.
+          </p>
+          <a href="#contact" class="video-btn">
+            <span>View All Videos</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-card">
+            <div class="video-thumb" style="background-position: center 32%;">
+              <span class="video-time">36:45</span>
+              <span class="video-play" aria-hidden="true"></span>
+            </div>
+            <div class="video-card-body">
+              <h3 class="video-title">Khabro Ki Chai Episode with Mohammad Saad</h3>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb" style="background-position: 58% 26%;">
+              <span class="video-time">12:20</span>
+              <span class="video-play" aria-hidden="true"></span>
+            </div>
+            <div class="video-card-body">
+              <h3 class="video-title">Leadership Talks</h3>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb" style="background-position: 70% 30%;">
+              <span class="video-time">19:30</span>
+              <span class="video-play" aria-hidden="true"></span>
+            </div>
+            <div class="video-card-body">
+              <h3 class="video-title">Healthcare Conversations</h3>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb" style="background-position: 46% 28%;">
+              <span class="video-time">14:10</span>
+              <span class="video-play" aria-hidden="true"></span>
+            </div>
+            <div class="video-card-body">
+              <h3 class="video-title">Entrepreneurship Insights</h3>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <div class="video-thumb" style="background-position: 82% 30%;">
+              <span class="video-time">30:22</span>
+              <span class="video-play" aria-hidden="true"></span>
+            </div>
+            <div class="video-card-body">
+              <h3 class="video-title">Community Initiatives</h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights" class="social-section">
+      <div class="social-shell">
+        <div class="social-intro">
+          <span class="social-eyebrow">Stay Connected</span>
+          <h2 class="social-heading">Live Updates<br>Across Platforms</h2>
+          <p class="social-copy">
+            Follow the journey in real-time across social media.
+          </p>
+
+          <div class="social-icons" aria-label="Social platforms">
+            <span class="social-icon-chip instagram">IG</span>
+            <span class="social-icon-chip linkedin">in</span>
+            <span class="social-icon-chip facebook">f</span>
+            <span class="social-icon-chip youtube">&#9654;</span>
+          </div>
+        </div>
+
+        <div class="social-panels">
+          <div class="social-panel">
+            <span class="social-label">Instagram</span>
+            <div class="social-card">
+              <div class="social-collage">
+                <div class="social-tile" style="background-position: 18% 24%;"></div>
+                <div class="social-tile" style="background-position: 42% 38%;"></div>
+                <div class="social-tile" style="background-position: 76% 30%;"></div>
+                <div class="social-tile" style="background-position: 24% 72%;"></div>
+                <div class="social-tile" style="background-position: 54% 62%;"></div>
+                <div class="social-tile" style="background-position: 86% 56%;"></div>
+              </div>
+
+              <div class="social-meta">
+                <div class="social-handle">@mohammadsaad</div>
+                <div class="social-count">48K+ Followers</div>
+                <a href="#contact" class="social-btn">View Profile <span>&rarr;</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-panel">
+            <span class="social-label">LinkedIn</span>
+            <div class="social-card">
+              <div class="social-collage" style="grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 1fr;">
+                <div class="social-tile" style="min-height: 154px; background-position: 28% 36%;"></div>
+                <div class="social-tile" style="min-height: 154px; background-position: 56% 46%;"></div>
+                <div class="social-tile" style="min-height: 154px; background-position: 84% 40%;"></div>
+              </div>
+
+              <div class="social-meta">
+                <div class="social-handle">Mohammad Saad</div>
+                <div class="social-count">32K+ Connections</div>
+                <a href="#contact" class="social-btn">View Profile <span>&rarr;</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="values-strip" aria-label="Core values">
+      <div class="values-shell">
+        <div class="values-grid">
+          <article class="value-item">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 20s-6-3.8-6-9a4 4 0 0 1 8 0 4 4 0 0 1 8 0c0 5.2-6 9-6 9Z"></path>
+                <path d="M8 17c1.5-1 3-1.5 4-1.5S14.5 16 16 17"></path>
+              </svg>
+            </span>
+            <h3 class="value-title">Trust Before<br>Treatment</h3>
+          </article>
+
+          <article class="value-item">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 4v2"></path>
+                <path d="M20 12h-2"></path>
+              </svg>
+            </span>
+            <h3 class="value-title">Discipline Over<br>Motivation</h3>
+          </article>
+
+          <article class="value-item">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="m5 12 7-7 7 7-7 7-7-7Z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </span>
+            <h3 class="value-title">Impact Over<br>Recognition</h3>
+          </article>
+
+          <article class="value-item">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="8" cy="9" r="3"></circle>
+                <circle cx="16" cy="9" r="3"></circle>
+                <path d="M3 20c1.5-3 4-5 7-5"></path>
+                <path d="M21 20c-1.5-3-4-5-7-5"></path>
+                <path d="M10.5 17c.6-1.8 1.8-3 3.5-3s2.9 1.2 3.5 3"></path>
+              </svg>
+            </span>
+            <h3 class="value-title">People Before<br>Profits</h3>
+          </article>
+
+          <article class="value-item">
+            <span class="value-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="7" r="3"></circle>
+                <path d="M5 21a7 7 0 0 1 14 0"></path>
+                <path d="M7 13h10"></path>
+              </svg>
+            </span>
+            <h3 class="value-title">Never Forget<br>Your Roots</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials-section" aria-label="Testimonials">
+      <div class="testimonials-shell">
+        <div class="testimonials-intro">
+          <span class="testimonials-eyebrow">Testimonials</span>
+          <h2 class="testimonials-heading">Voices of Trust</h2>
+          <p class="testimonials-copy">
+            Words from patients, colleagues and community members.
+          </p>
+          <button type="button" class="testimonials-prev" aria-label="Previous testimonials">&#8249;</button>
+        </div>
+
+        <div class="testimonials-track">
+          <div class="testimonials-grid">
+            <article class="testimonial-card">
+              <p class="testimonial-quote">
+                "MR Hospital changed the way healthcare is perceived in our community. The care and dedication are unmatched."
+              </p>
+              <div class="testimonial-author">
+                <span class="testimonial-avatar patient" aria-hidden="true"></span>
+                <div class="testimonial-meta">
+                  <div class="testimonial-name">Patient</div>
+                  <div class="testimonial-role">MR Hospital</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <p class="testimonial-quote">
+                "Mohammad Saad is a leader who combines vision with compassion. A true inspiration."
+              </p>
+              <div class="testimonial-author">
+                <span class="testimonial-avatar leader" aria-hidden="true"></span>
+                <div class="testimonial-meta">
+                  <div class="testimonial-name">Business Leader</div>
+                  <div class="testimonial-role">Patna</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <p class="testimonial-quote">
+                "His commitment to quality healthcare and community development is remarkable."
+              </p>
+              <div class="testimonial-author">
+                <span class="testimonial-avatar community" aria-hidden="true"></span>
+                <div class="testimonial-meta">
+                  <div class="testimonial-name">Community Member</div>
+                  <div class="testimonial-role">Bihar</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <p class="testimonial-quote">
+                "A visionary entrepreneur building institutions that will impact generations."
+              </p>
+              <div class="testimonial-author">
+                <span class="testimonial-avatar doctor" aria-hidden="true"></span>
+                <div class="testimonial-meta">
+                  <div class="testimonial-name">Doctor</div>
+                  <div class="testimonial-role">MR Hospital</div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="testimonials-dots" aria-hidden="true">
+            <span class="testimonials-dot active"></span>
+            <span class="testimonials-dot"></span>
+          </div>
+        </div>
+
+        <button type="button" class="testimonials-next" aria-label="Next testimonials">&#8250;</button>
+      </div>
+    </section>
+
+    <section id="contact" class="page-section">
+      <div class="section-shell">
+        <div class="footer-panel">
+          <div class="footer-column">
+            <img src="images/footer-signature.png" alt="Mohammad Saad signature" class="footer-signature">
+            <p class="footer-copy">
+              Entrepreneur, Healthcare Leader,<br>
+              Institution Builder.
+            </p>
+            <p class="footer-copy" style="margin-top: 10px;">
+              Building trust. Creating impact.<br>
+              Inspiring change.
+            </p>
+            <p class="footer-note">C 2024 Mohammad Saad. All Rights Reserved.</p>
+          </div>
+
+          <div class="footer-column">
+            <span class="footer-title">Quick Links</span>
+            <div class="footer-links-grid">
+              <a href="#home" class="footer-link">Home</a>
+              <a href="#insights" class="footer-link">Insights</a>
+              <a href="#journey" class="footer-link">About Me</a>
+              <a href="#media" class="footer-link">News &amp; Articles</a>
+              <a href="#journey" class="footer-link">Journey</a>
+              <a href="#media" class="footer-link">Videos</a>
+              <a href="#hospital" class="footer-link">MR Hospital</a>
+              <a href="#insights" class="footer-link">Gallery</a>
+              <a href="#media" class="footer-link">Media</a>
+              <a href="#contact" class="footer-link">Contact</a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <span class="footer-title">Get In Touch</span>
+            <div class="footer-contact-list">
+              <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                  <path d="m4 7 8 6 8-6"></path>
+                </svg>
+                <span>hello@mohammadsaad.com</span>
+              </div>
+
+              <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.52 19.52 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72l.34 2.68a2 2 0 0 1-.57 1.72l-1.4 1.4a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 1.72-.57l2.68.34A2 2 0 0 1 22 16.92Z"></path>
+                </svg>
+                <span>+91 9034 56789</span>
+              </div>
+
+              <div class="footer-contact-item">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"></path>
+                  <circle cx="12" cy="11" r="2.3"></circle>
+                </svg>
+                <span>Patna, Bihar, India</span>
+              </div>
+            </div>
+
+            <a href="#contact" class="footer-cta">
+              <span>Let's Connect</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <div class="footer-column">
+            <span class="footer-title">Newsletter</span>
+            <p class="footer-news-copy">
+              Subscribe to get the latest updates on my journey and initiatives.
+            </p>
+
+            <div class="footer-newsletter">
+              <input type="email" placeholder="Enter your email" aria-label="Enter your email">
+              <button type="button" class="footer-submit" aria-label="Subscribe">&rarr;</button>
+            </div>
+
+            <div class="footer-socials" aria-label="Social links">
+              <a href="#insights" class="footer-social" aria-label="Instagram">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17.5" cy="6.5" r="1.2"></circle>
+                </svg>
+              </a>
+              <a href="#insights" class="footer-social" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6.7 8.6H3.9V20h2.8zM5.3 3A1.7 1.7 0 1 0 5.3 6.4 1.7 1.7 0 0 0 5.3 3Zm14.8 8.9c0-2.8-1.5-4.1-3.5-4.1-1.6 0-2.3.9-2.7 1.5V8.6h-2.8V20h2.8v-6.1c0-.3 0-.6.1-.8.2-.6.8-1.3 1.8-1.3 1.2 0 1.8.9 1.8 2.3V20h2.8z"></path>
+                </svg>
+              </a>
+              <a href="#insights" class="footer-social" aria-label="Facebook">
+                <svg viewBox="0 0 24 24">
+                  <path d="M13.5 21v-7h2.3l.3-2.7h-2.6V9.6c0-.8.2-1.3 1.4-1.3H16V5.9c-.6-.1-1.3-.1-1.9-.1-1.9 0-3.3 1.2-3.3 3.4v2.1H8.5V14h2.3v7z"></path>
+                </svg>
+              </a>
+              <a href="#media" class="footer-social" aria-label="YouTube">
+                <svg viewBox="0 0 24 24">
+                  <path d="M21.6 7.7a2.8 2.8 0 0 0-2-2c-1.8-.5-7.6-.5-7.6-.5s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A28.4 28.4 0 0 0 2 12a28.4 28.4 0 0 0 .4 4.3 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A28.4 28.4 0 0 0 22 12a28.4 28.4 0 0 0-.4-4.3ZM10 15.2V8.8l5.2 3.2Z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    gsap.from(".logo", {
+      y: -28,
+      opacity: 0,
+      duration: 0.9,
+      ease: "power3.out"
+    });
+
+    gsap.from(".nav-links", {
+      y: -18,
+      opacity: 0,
+      duration: 0.85,
+      delay: 0.1,
+      ease: "power3.out"
+    });
+
+    gsap.from(".cta-btn", {
+      x: 24,
+      opacity: 0,
+      duration: 0.9,
+      delay: 0.15,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero-kicker", {
+      y: 22,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.25,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero-title-line > span", {
+      yPercent: 110,
+      opacity: 0,
+      duration: 1.1,
+      stagger: 0.16,
+      delay: 0.34,
+      ease: "power4.out",
+      onComplete: () => {
+        document.querySelectorAll(".hero-title-line").forEach((line) => {
+          line.style.overflow = "visible";
+        });
+      }
+    });
+
+    gsap.from(".hero-description", {
+      y: 24,
+      opacity: 0,
+      duration: 0.9,
+      delay: 0.72,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero-actions .hero-btn", {
+      y: 20,
+      opacity: 0,
+      duration: 0.85,
+      stagger: 0.1,
+      delay: 0.88,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero-stats .stat", {
+      y: 26,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      delay: 1.02,
+      ease: "power3.out"
+    });
+
+    gsap.from(".portrait-wrap", {
+      x: 42,
+      opacity: 0,
+      duration: 1.2,
+      delay: 0.35,
+      ease: "power3.out"
+    });
+
+    gsap.from(".scroll-indicator", {
+      opacity: 0,
+      duration: 0.8,
+      delay: 1.05,
+      ease: "power2.out"
+    });
+  </script>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+    const body = document.body;
+    const navToggle = document.getElementById("navToggle");
+    const mobileNavPanel = document.getElementById("mobileNavPanel");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-links a, .mobile-nav-cta");
+    const portraitWrap = document.getElementById("portraitWrap");
+    const hero = document.querySelector(".hero");
+    const pressLogos = document.querySelector(".press-logos");
+    const pressPrev = document.getElementById("pressPrev");
+    const pressNext = document.getElementById("pressNext");
+    let pressOffset = 0;
+
+    function closeMobileMenu() {
+      navbar.classList.remove("menu-open");
+      body.classList.remove("menu-open");
+      if (navToggle) {
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Open navigation menu");
+      }
+    }
+
+    function toggleMobileMenu() {
+      const isOpen = navbar.classList.toggle("menu-open");
+      body.classList.toggle("menu-open", isOpen);
+      if (navToggle) {
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+      }
+    }
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    hero.addEventListener("mousemove", (event) => {
+      const rect = hero.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      const moveX = (x - 0.5) * 26;
+      const moveY = (y - 0.5) * 20;
+
+      portraitWrap.style.transform = "translate3d(" + moveX + "px," + moveY + "px,0)";
+    });
+
+    hero.addEventListener("mouseleave", () => {
+      portraitWrap.style.transform = "translate3d(0,0,0)";
+    });
+
+    function updatePressStrip(direction) {
+      if (!pressLogos) {
+        return;
+      }
+
+      pressOffset += direction * 56;
+
+      if (pressOffset > 56) {
+        pressOffset = -56;
+      }
+
+      if (pressOffset < -56) {
+        pressOffset = 56;
+      }
+
+      pressLogos.style.transform = "translateX(" + pressOffset + "px)";
+    }
+
+    if (pressPrev) {
+      pressPrev.addEventListener("click", () => {
+        updatePressStrip(1);
+      });
+    }
+
+    if (pressNext) {
+      pressNext.addEventListener("click", () => {
+        updatePressStrip(-1);
+      });
+    }
+
+    if (navToggle) {
+      navToggle.addEventListener("click", toggleMobileMenu);
+    }
+
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", closeMobileMenu);
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 820) {
+        closeMobileMenu();
+      }
+    });
+  </script>
+</body>
+</html>
