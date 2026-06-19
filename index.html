@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammad Saad | Entrepreneur, Healthcare Leader & Founder of MR Hospital</title>
+  <title>Mohammad Saad | Entrepreneur, Healthcare Leader & Director at MR Hospital</title>
   <meta name="description" content="Explore Mohammad Saad's journey as an entrepreneur and healthcare leader in Bihar, and discover MR Hospital in Patna, patient-first care, media features, community impact, and contact information.">
   <meta name="keywords" content="Mohammad Saad, MR Hospital Patna, healthcare leader Bihar, entrepreneur Patna, Bailey Road hospital, patient care Patna, hospital in Raja Bazar, Mohammad Saad Bihar">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="index.html">
-  <meta property="og:title" content="Mohammad Saad | Entrepreneur, Healthcare Leader & Founder of MR Hospital">
+  <meta property="og:title" content="Mohammad Saad | Entrepreneur, Healthcare Leader & Director at MR Hospital">
   <meta property="og:description" content="A fast, SEO-friendly profile website featuring Mohammad Saad, MR Hospital, community impact, media presence, and patient-focused healthcare in Patna.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/mohammad-saad.png">
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="index.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mohammad Saad | Entrepreneur, Healthcare Leader & Founder of MR Hospital">
+  <meta name="twitter:title" content="Mohammad Saad | Entrepreneur, Healthcare Leader & Director at MR Hospital">
   <meta name="twitter:description" content="Learn about Mohammad Saad, MR Hospital in Patna, and the mission to build trusted, accessible healthcare in Bihar.">
   <meta name="twitter:image" content="images/mohammad-saad.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,11 +39,7 @@
         {
           "@type": "Organization",
           "name": "Mohammad Saad Official",
-          "description": "Official digital presence for Mohammad Saad, entrepreneur, healthcare leader and institution builder in Bihar.",
-          "founder": {
-            "@type": "Person",
-            "name": "Mohammad Saad"
-          }
+          "description": "Official digital presence for Mohammad Saad, entrepreneur, healthcare leader and director at MR Hospital in Bihar."
         },
         {
           "@type": "Hospital",
@@ -56,7 +52,7 @@
             "postalCode": "800014",
             "addressCountry": "IN"
           },
-          "telephone": "+91 9034 56789",
+          "telephone": "+91 70335 82072",
           "url": "https://share.google/RPJ2BRIVNF1WRFFO1",
           "description": "MR Hospital is a patient-focused healthcare institution in Patna offering emergency support, diagnostics, ICU care, and modern clinical infrastructure."
         },
@@ -71,7 +67,7 @@
             "postalCode": "800014",
             "addressCountry": "IN"
           },
-          "telephone": "+91 9034 56789",
+          "telephone": "+91 70335 82072",
           "url": "https://share.google/RPJ2BRIVNF1WRFFO1"
         }
       ]
@@ -585,6 +581,14 @@
       border: 1px solid rgba(255, 255, 255, 0.82);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
       flex: 0 0 auto;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .press-logo:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+      border-color: rgba(200, 164, 109, 0.55);
     }
 
     .press-logo img {
@@ -2199,42 +2203,7 @@
     .hospital-visual-image {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(8, 20, 38, 0.08) 0%, rgba(8, 20, 38, 0.18) 100%), url('images/mr-hospital-feature-new.png') center center / cover no-repeat;
-    }
-
-    .hospital-play {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 2;
-      width: 118px;
-      height: 118px;
-      border-radius: 999px;
-      border: 3px solid rgba(255, 255, 255, 0.62);
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(4px);
-      transform: translate(-50%, -50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 20px 34px rgba(0, 0, 0, 0.16);
-      transition: transform .34s ease, box-shadow .34s ease, border-color .34s ease, background .34s ease;
-      cursor: pointer;
-    }
-
-    .hospital-play::before {
-      content: "";
-      margin-left: 8px;
-      border-top: 20px solid transparent;
-      border-bottom: 20px solid transparent;
-      border-left: 30px solid #ffffff;
-    }
-
-    .hospital-play:hover {
-      transform: translate(-50%, -50%) scale(1.05);
-      border-color: rgba(255, 255, 255, 0.88);
-      background: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 24px 40px rgba(0, 0, 0, 0.22);
+      background: linear-gradient(180deg, rgba(8, 20, 38, 0.08) 0%, rgba(8, 20, 38, 0.18) 100%), url('images/mr-hospital-static-clean.png') center center / cover no-repeat;
     }
 
     .hospital-body {
@@ -2409,56 +2378,6 @@
       background: #fff;
       transform: translate(-50%, -50%);
       z-index: 2;
-    }
-
-    .video-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 300;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(4, 10, 18, 0.84);
-      backdrop-filter: blur(8px);
-    }
-
-    .video-modal.open {
-      display: flex;
-    }
-
-    .video-modal-dialog {
-      position: relative;
-      width: min(960px, 100%);
-      border-radius: 18px;
-      overflow: hidden;
-      background: #071426;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
-    }
-
-    .video-modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 3;
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(7, 20, 38, 0.78);
-      color: #fff;
-      font-size: 1.35rem;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    .video-modal-frame {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 0;
-      display: block;
-      background: #02060c;
     }
 
     .video-hub {
@@ -4145,17 +4064,6 @@
         min-height: 240px;
       }
 
-      .hospital-play {
-        width: 82px;
-        height: 82px;
-      }
-
-      .hospital-play::before {
-        border-top-width: 14px;
-        border-bottom-width: 14px;
-        border-left-width: 22px;
-      }
-
       .hospital-title {
         font-size: clamp(2.2rem, 10vw, 3rem);
       }
@@ -4719,11 +4627,6 @@
         min-height: 348px;
       }
 
-      .hospital-play {
-        width: 68px;
-        height: 68px;
-      }
-
       .footer-title {
         font-size: 0.76rem;
       }
@@ -4840,52 +4743,13 @@
             </a>
           </div>
 
-          <div class="hero-stats">
-            <div class="stat">
-              <div class="stat-icon instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                  <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                  <circle cx="12" cy="12" r="4"></circle>
-                  <circle cx="17.5" cy="6.5" r="1"></circle>
-                </svg>
-              </div>
-              <div>
-                <div class="stat-value">48K+</div>
-                <div class="stat-label">Followers</div>
-              </div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-icon facebook">
-                <svg viewBox="0 0 24 24" fill="white">
-                  <path d="M13.5 21v-7h2.3l.3-2.7h-2.6V9.6c0-.8.2-1.3 1.4-1.3H16V5.9c-.6-.1-1.3-.1-1.9-.1-1.9 0-3.3 1.2-3.3 3.4v2.1H8.5V14h2.3v7z"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="stat-value">32K+</div>
-                <div class="stat-label">Followers</div>
-              </div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-icon youtube">
-                <svg viewBox="0 0 24 24" fill="white">
-                  <path d="M21.58 7.19a2.99 2.99 0 0 0-2.1-2.11C17.62 4.5 12 4.5 12 4.5s-5.62 0-7.48.58a2.99 2.99 0 0 0-2.1 2.11A31.7 31.7 0 0 0 1.83 12c0 1.63.2 3.27.59 4.81a2.99 2.99 0 0 0 2.1 2.11c1.86.58 7.48.58 7.48.58s5.62 0 7.48-.58a2.99 2.99 0 0 0 2.1-2.11c.39-1.54.59-3.18.59-4.81 0-1.63-.2-3.27-.59-4.81ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="stat-value">12K+</div>
-                <div class="stat-label">Subscribers</div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div class="hero-visual">
           <div class="portrait-glow"></div>
 
           <div class="portrait-wrap" id="portraitWrap">
-            <img src="images/hero-portrait-photoroom.png" alt="Mohammad Saad portrait" class="portrait">
+            <img src="images/hero-portrait-new.png" alt="Mohammad Saad portrait" class="portrait">
           </div>
         </div>
       </div>
@@ -4904,37 +4768,37 @@
 
           <div class="press-viewport">
             <div class="press-logos">
-              <div class="press-logo">
+              <a href="https://entrepreneurstreet.in/mohammed-saad-mushtaque-a-remarkable-journey-of-struggle-vision-and-service/" class="press-logo" target="_blank" rel="noopener noreferrer" aria-label="Open Entrepreneur Street article">
                 <img src="images/entrepreneur-logo-ff-3-removebg-preview.png" alt="Entrepreneur Street">
-              </div>
+              </a>
 
-              <div class="press-logo">
+              <a href="https://hindustaninsider.in/2026/06/09/mohammed-saad-mushtaque-a-remarkable-journey-of-struggle-vision-and-service/" class="press-logo" target="_blank" rel="noopener noreferrer" aria-label="Open Hindustan Insider article">
                 <img src="images/cropped-HI-1-removebg-preview.png" alt="Hindustan Insider">
-              </div>
+              </a>
 
-              <div class="press-logo">
+              <a href="https://english.punjabbytes.com/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" class="press-logo" target="_blank" rel="noopener noreferrer" aria-label="Open Punjab Bytes article">
                 <img src="images/logo-punjab-bytes-removebg-preview.png" alt="Punjab Bytes">
-              </div>
+              </a>
 
-              <div class="press-logo">
+              <a href="https://thedailybeat.in/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership-7832" class="press-logo" target="_blank" rel="noopener noreferrer" aria-label="Open The Daily Beat article">
                 <img src="images/images__1_-removebg-preview.png" alt="The Daily Beat">
-              </div>
+              </a>
 
-              <div class="press-logo">
+              <a href="https://entrepreneurhunt.com/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" class="press-logo" target="_blank" rel="noopener noreferrer" aria-label="Open Entrepreneur Hunt article">
                 <img src="images/rs_w_388_h_194_cg_true_m-removebg-preview.png" alt="Entrepreneur Hunt">
-              </div>
+              </a>
 
-              <div class="press-logo">
+              <a href="https://influenciveindia.in/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" class="press-logo" target="_blank" rel="noopener noreferrer" aria-label="Open Influencive India article">
                 <img src="images/images__2_-removebg-preview.png" alt="Influencive India">
-              </div>
+              </a>
 
-              <div class="press-logo">
+              <a href="https://medium.com/@usedtiresnearme/mohammed-saad-mushtaque-a-remarkable-journey-of-struggle-vision-and-service-b4f1472b79d1" class="press-logo" target="_blank" rel="noopener noreferrer" aria-label="Open Medium article">
                 <img src="images/images__3_-removebg-preview.png" alt="Medium">
-              </div>
+              </a>
 
-              <div class="press-logo">
+              <a href="https://hindustanbytes.com/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" class="press-logo" target="_blank" rel="noopener noreferrer" aria-label="Open Hindustan Bytes article">
                 <span class="press-logo-text">Hindustan Bytes</span>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -4962,7 +4826,7 @@
               <span class="about-chip-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M12 13a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"></path><path d="M5 20a7 7 0 0 1 14 0"></path></svg>
               </span>
-              Founder, MR Hospital
+              Director, MR Hospital
             </span>
             <span class="about-pulse-chip">
               <span class="about-chip-icon" aria-hidden="true">
@@ -5456,11 +5320,10 @@
       <div class="hospital-shell">
         <div class="hospital-visual">
           <div class="hospital-visual-image"></div>
-          <button type="button" class="hospital-play" id="hospitalVideoTrigger" aria-label="Play MR Hospital introduction video"></button>
         </div>
 
         <div class="hospital-body">
-          <span class="hospital-eyebrow">Founder Of</span>
+          <span class="hospital-eyebrow">Director At</span>
           <h2 class="hospital-title">MR HOSPITAL</h2>
 
           <div class="hospital-location">
@@ -5564,20 +5427,6 @@
       </div>
     </section>
 
-    <div class="video-modal" id="videoModal" aria-hidden="true">
-      <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-label="MR Hospital video">
-        <button type="button" class="video-modal-close" id="videoModalClose" aria-label="Close video popup">&times;</button>
-        <iframe
-          class="video-modal-frame"
-          id="videoModalFrame"
-          title="MR Hospital Video"
-          src=""
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen></iframe>
-      </div>
-    </div>
-
     <section id="media" class="video-hub">
       <div class="video-shell">
         <div class="video-intro">
@@ -5615,7 +5464,7 @@
             <div class="video-card-body">
               <div class="video-card-meta">Exclusive On</div>
               <h3 class="video-title">The Daily Beat</h3>
-              <div class="video-subtitle">Founder Conversation</div>
+              <div class="video-subtitle">Director Conversation</div>
             </div>
           </article>
 
@@ -6095,10 +5944,10 @@
               <span>Healthcare Leader</span>
             </div>
             <p class="footer-copy">
-              Founder, MR Hospital
+              Director, MR Hospital
             </p>
             <p class="footer-copy" style="margin-top: 12px;">
-              Founder of MR Hospital and a passionate advocate for accessible healthcare in Bihar.
+              Director at MR Hospital and a passionate advocate for accessible healthcare in Bihar.
             </p>
             <p class="footer-copy" style="margin-top: 12px;">
               Committed to building institutions that create long-term impact through trust, service and leadership.
@@ -6175,7 +6024,7 @@
               Stay Updated
             </p>
             <p class="footer-news-copy" style="margin-top: -6px;">
-              Receive insights, media appearances, hospital updates and founder stories.
+              Receive insights, media appearances, hospital updates and director stories.
             </p>
 
             <div class="footer-newsletter">
@@ -6202,7 +6051,7 @@
                   <path d="M23 12.1s0-3-0.4-4.3a3 3 0 0 0-2.1-2.1C19.2 5.2 12 5.2 12 5.2s-7.2 0-8.5.5A3 3 0 0 0 1.4 7.8C1 9.1 1 12 1 12s0 3 .4 4.3a3 3 0 0 0 2.1 2.1c1.3.5 8.5.5 8.5.5s7.2 0 8.5-.5a3 3 0 0 0 2.1-2.1c.4-1.3.4-4.2.4-4.2ZM9.7 15.7V8.3l6.2 3.7-6.2 3.7Z"></path>
                 </svg>
               </a>
-              <a href="https://wa.me/91903456789" target="_blank" rel="noopener noreferrer" class="footer-social whatsapp" aria-label="WhatsApp">
+              <a href="https://wa.me/917033582072" target="_blank" rel="noopener noreferrer" class="footer-social whatsapp" aria-label="WhatsApp">
                 <svg viewBox="0 0 24 24">
                   <path d="M12.04 2C6.55 2 2.09 6.45 2.09 11.94c0 1.76.46 3.48 1.33 5l-1.42 5.18 5.31-1.39a9.9 9.9 0 0 0 4.73 1.2h.01c5.49 0 9.95-4.46 9.95-9.95A9.9 9.9 0 0 0 12.04 2Zm0 18.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.17-3.15.83.84-3.07-.2-.31a8.18 8.18 0 0 1-1.26-4.39 8.26 8.26 0 1 1 8.25 8.26Zm4.53-6.18c-.25-.13-1.48-.73-1.71-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.03-.38-1.96-1.23-.72-.64-1.21-1.43-1.35-1.68-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.76-1.85-.2-.48-.4-.41-.56-.42h-.47a.9.9 0 0 0-.64.29c-.22.25-.85.83-.85 2.03s.87 2.36.99 2.52c.13.17 1.7 2.59 4.11 3.63.57.25 1.01.4 1.36.51.57.18 1.08.15 1.49.09.46-.07 1.48-.61 1.69-1.2.21-.58.21-1.08.15-1.19-.07-.11-.23-.17-.48-.29Z"></path>
                 </svg>
@@ -6228,7 +6077,7 @@
     </section>
   </main>
 
-  <a href="https://wa.me/91903456789" class="whatsapp-widget" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+  <a href="https://wa.me/917033582072" class="whatsapp-widget" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 24 24">
       <path d="M12.04 2C6.55 2 2.09 6.45 2.09 11.94c0 1.76.46 3.48 1.33 5l-1.42 5.18 5.31-1.39a9.9 9.9 0 0 0 4.73 1.2h.01c5.49 0 9.95-4.46 9.95-9.95A9.9 9.9 0 0 0 12.04 2Zm0 18.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.17-3.15.83.84-3.07-.2-.31a8.18 8.18 0 0 1-1.26-4.39 8.26 8.26 0 1 1 8.25 8.26Zm4.53-6.18c-.25-.13-1.48-.73-1.71-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.03-.38-1.96-1.23-.72-.64-1.21-1.43-1.35-1.68-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.76-1.85-.2-.48-.4-.41-.56-.42h-.47a.9.9 0 0 0-.64.29c-.22.25-.85.83-.85 2.03s.87 2.36.99 2.52c.13.17 1.7 2.59 4.11 3.63.57.25 1.01.4 1.36.51.57.18 1.08.15 1.49.09.46-.07 1.48-.61 1.69-1.2.21-.58.21-1.08.15-1.19-.07-.11-.23-.17-.48-.29Z"></path>
     </svg>
@@ -6338,10 +6187,6 @@
     const newsCards = document.querySelectorAll(".news-card");
     const newsPrev = document.getElementById("newsPrev");
     const newsNext = document.getElementById("newsNext");
-    const hospitalVideoTrigger = document.getElementById("hospitalVideoTrigger");
-    const videoModal = document.getElementById("videoModal");
-    const videoModalFrame = document.getElementById("videoModalFrame");
-    const videoModalClose = document.getElementById("videoModalClose");
     const testimonialsGrid = document.querySelector(".testimonials-grid");
     const testimonialCards = document.querySelectorAll(".testimonial-link-card");
     const testimonialsPrev = document.querySelector(".testimonials-prev");
@@ -6354,8 +6199,6 @@
     let newsTimer = null;
     let testimonialsIndex = 0;
     let testimonialsTimer = null;
-    const HOSPITAL_VIDEO_EMBED_URL = "https://www.youtube.com/embed/JrPCBuXpsPI?autoplay=1&rel=0";
-
     function closeMobileMenu() {
       navbar.classList.remove("menu-open");
       body.classList.remove("menu-open");
@@ -6372,26 +6215,6 @@
         navToggle.setAttribute("aria-expanded", String(isOpen));
         navToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
       }
-    }
-
-    function openHospitalVideoModal() {
-      if (!videoModal || !videoModalFrame) {
-        return;
-      }
-
-      videoModal.classList.add("open");
-      videoModal.setAttribute("aria-hidden", "false");
-      videoModalFrame.src = HOSPITAL_VIDEO_EMBED_URL;
-    }
-
-    function closeHospitalVideoModal() {
-      if (!videoModal || !videoModalFrame) {
-        return;
-      }
-
-      videoModal.classList.remove("open");
-      videoModal.setAttribute("aria-hidden", "true");
-      videoModalFrame.src = "";
     }
 
     window.addEventListener("scroll", () => {
@@ -6664,30 +6487,8 @@
       navToggle.addEventListener("click", toggleMobileMenu);
     }
 
-    if (hospitalVideoTrigger) {
-      hospitalVideoTrigger.addEventListener("click", openHospitalVideoModal);
-    }
-
-    if (videoModalClose) {
-      videoModalClose.addEventListener("click", closeHospitalVideoModal);
-    }
-
-    if (videoModal) {
-      videoModal.addEventListener("click", (event) => {
-        if (event.target === videoModal) {
-          closeHospitalVideoModal();
-        }
-      });
-    }
-
     mobileNavLinks.forEach((link) => {
       link.addEventListener("click", closeMobileMenu);
-    });
-
-    window.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeHospitalVideoModal();
-      }
     });
 
     window.addEventListener("resize", () => {
