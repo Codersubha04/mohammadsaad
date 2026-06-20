@@ -18,6 +18,7 @@
   <meta name="twitter:title" content="Mohammad Saad | Entrepreneur, Healthcare Leader & Director at MR Hospital">
   <meta name="twitter:description" content="Learn about Mohammad Saad, MR Hospital in Patna, and the mission to build trusted, accessible healthcare in Bihar.">
   <meta name="twitter:image" content="images/mohammad-saad.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -83,7 +84,7 @@
       --faint: rgba(255, 255, 255, 0.62);
       --accent: #C8A46D;
       --accent-strong: #d7b177;
-      --hero-pad-x: 112px;
+      --hero-pad-x: 72px;
     }
 
     * {
@@ -697,6 +698,160 @@
       transform: translateX(3px) scale(1.06);
     }
 
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .accent-text {
+      color: var(--accent);
+    }
+
+    .hero-divider {
+      width: 86px;
+      height: 1px;
+      margin-top: 24px;
+      background: linear-gradient(90deg, rgba(200, 164, 109, 0.96) 0%, rgba(200, 164, 109, 0.22) 100%);
+    }
+
+    .contact-hero-premium {
+      padding: 0;
+      background: #06111d;
+    }
+
+    .contact-hero-shell {
+      width: min(1920px, 100%);
+      padding: 0;
+    }
+
+    .contact-hero-card {
+      position: relative;
+      min-height: calc(100vh - 82px);
+      display: grid;
+      grid-template-columns: minmax(380px, 0.8fr) minmax(640px, 1.2fr);
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(4, 11, 19, 0.98) 0%, rgba(4, 11, 19, 0.97) 30%, rgba(4, 11, 19, 0.88) 44%, rgba(4, 11, 19, 0.5) 58%, rgba(4, 11, 19, 0.12) 75%, rgba(4, 11, 19, 0.04) 100%),
+        radial-gradient(circle at 16% 22%, rgba(200, 164, 109, 0.09) 0%, transparent 26%),
+        linear-gradient(180deg, #071321 0%, #040c16 100%);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .contact-hero-copy {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 560px;
+      padding: 66px 28px 54px 72px;
+    }
+
+    .contact-hero-title {
+      margin-top: 18px;
+      color: #f8f3eb;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.8rem, 5.3vw, 5.7rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+    }
+
+    .contact-hero-title span {
+      display: block;
+    }
+
+    .contact-hero-description {
+      margin-top: 24px;
+      max-width: 470px;
+      color: rgba(244, 238, 229, 0.86);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .contact-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .contact-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 60px;
+      padding: 0 24px;
+      border-radius: 12px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .contact-hero-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .contact-hero-btn-primary {
+      background: linear-gradient(180deg, #e1ad56 0%, #c8923f 100%);
+      color: #fff9f0;
+      box-shadow: 0 16px 30px rgba(200, 146, 63, 0.22);
+    }
+
+    .contact-hero-btn-secondary {
+      border: 1px solid rgba(200, 164, 109, 0.48);
+      background: rgba(255, 255, 255, 0.02);
+      color: #f6efe4;
+    }
+
+    .contact-hero-btn-icon {
+      width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-hero-btn-icon svg {
+      width: 21px;
+      height: 21px;
+      fill: currentColor;
+    }
+
+    .contact-hero-visual {
+      position: relative;
+      min-height: 100%;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 83% 18%, rgba(255, 198, 120, 0.16) 0%, rgba(255, 198, 120, 0.02) 15%, transparent 28%),
+        linear-gradient(180deg, rgba(6, 12, 21, 0.02) 0%, rgba(6, 12, 21, 0.36) 100%);
+    }
+
+    .contact-hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        linear-gradient(90deg, rgba(5, 12, 20, 0.14) 0%, rgba(5, 12, 20, 0.02) 18%, rgba(5, 12, 20, 0.14) 100%),
+        radial-gradient(circle at 82% 22%, rgba(255, 206, 134, 0.14) 0%, transparent 14%);
+      pointer-events: none;
+    }
+
+    .contact-hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
     .about-section {
       position: relative;
       overflow: hidden;
@@ -921,15 +1076,18 @@
       padding: 18px 8px 18px 0;
     }
 
-    .about-content::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 36px;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(200, 164, 109, 0.3) 0%, rgba(200, 164, 109, 0.75) 24%, rgba(200, 164, 109, 0.3) 100%);
-      z-index: 0;
+    .about-content.hero-copy {
+      max-width: 640px;
+      padding: 18px 8px 18px 0;
+      --hero-stack-gap: 24px;
+    }
+
+    .about-content.hero-copy .hero-description {
+      max-width: 520px;
+    }
+
+    .about-content.hero-copy .hero-actions {
+      margin-top: 30px;
     }
 
     .about-eyebrow {
@@ -2447,16 +2605,24 @@
     }
 
     .video-card {
+      display: block;
       overflow: hidden;
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.18);
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
 
     .video-card.featured-media {
       border-color: rgba(212, 173, 124, 0.38);
       box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212, 173, 124, 0.52);
+      box-shadow: 0 22px 42px rgba(0, 0, 0, 0.22);
     }
 
     .video-thumb {
@@ -2479,31 +2645,6 @@
       font-size: 0.66rem;
       font-weight: 700;
       letter-spacing: 0.04em;
-    }
-
-    .video-play {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      z-index: 2;
-      width: 54px;
-      height: 54px;
-      border-radius: 999px;
-      border: 2px solid rgba(255, 255, 255, 0.72);
-      background: rgba(255, 255, 255, 0.08);
-      transform: translate(-50%, -50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(4px);
-    }
-
-    .video-play::before {
-      content: "";
-      margin-left: 4px;
-      border-top: 9px solid transparent;
-      border-bottom: 9px solid transparent;
-      border-left: 14px solid #ffffff;
     }
 
     .video-card-body {
@@ -2597,6 +2738,13 @@
       justify-content: center;
       box-shadow: 0 12px 24px rgba(20, 24, 31, 0.1);
       color: #fff;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .social-icon-chip:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 28px rgba(20, 24, 31, 0.16);
     }
 
     .social-icon-chip.instagram {
@@ -3207,12 +3355,26 @@
     }
 
     .value-item {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 18px;
       min-height: 96px;
       padding: 0 28px;
       border-right: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      transition: transform .28s ease, background .28s ease, box-shadow .28s ease, border-color .28s ease;
+      overflow: hidden;
+    }
+
+    .value-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212, 170, 105, 0.12) 0%, rgba(255, 255, 255, 0.02) 48%, rgba(212, 170, 105, 0.08) 100%);
+      opacity: 0;
+      transition: opacity .28s ease;
+      pointer-events: none;
     }
 
     .value-item:first-child {
@@ -3224,7 +3386,19 @@
       padding-right: 6px;
     }
 
+    .value-item:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.2);
+    }
+
+    .value-item:hover::before {
+      opacity: 1;
+    }
+
     .value-icon {
+      position: relative;
+      z-index: 1;
       width: 62px;
       height: 62px;
       border-radius: 999px;
@@ -3240,6 +3414,17 @@
       box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, 0.03),
         0 10px 20px rgba(0, 0, 0, 0.16);
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease, color .28s ease;
+    }
+
+    .value-item:hover .value-icon {
+      transform: scale(1.06) translateY(-2px);
+      color: #ddb67a;
+      border-color: rgba(221, 182, 122, 0.78);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 16px 28px rgba(0, 0, 0, 0.24),
+        0 0 24px rgba(212, 170, 105, 0.14);
     }
 
     .value-icon svg {
@@ -3253,11 +3438,19 @@
     }
 
     .value-title {
+      position: relative;
+      z-index: 1;
       color: #ffffff;
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
       line-height: 1.15;
       font-weight: 600;
+      transition: color .28s ease, transform .28s ease;
+    }
+
+    .value-item:hover .value-title {
+      color: #fff8ec;
+      transform: translateX(2px);
     }
 
     @keyframes wheel {
@@ -3614,6 +3807,28 @@
         min-height: 680px;
       }
 
+      .contact-hero-card {
+        min-height: 760px;
+        grid-template-columns: 1fr;
+      }
+
+      .contact-hero-copy {
+        max-width: none;
+        padding: 46px 28px 24px;
+      }
+
+      .contact-hero-title {
+        font-size: clamp(3rem, 7vw, 4.35rem);
+      }
+
+      .contact-hero-description {
+        max-width: 430px;
+      }
+
+      .contact-hero-visual {
+        min-height: 360px;
+      }
+
       .portrait-wrap {
         position: relative;
         right: auto;
@@ -3831,6 +4046,10 @@
         padding: 52px 0 48px;
       }
 
+      .about-section.contact-hero-premium {
+        padding: 0;
+      }
+
       .about-shell {
         width: calc(100% - 28px);
         padding: 0 14px;
@@ -3883,6 +4102,10 @@
       .about-card-label {
         margin-bottom: 10px;
         font-size: 0.68rem;
+      }
+
+      .contact-hero-card {
+        min-height: 760px;
       }
 
       .hero {
@@ -4253,6 +4476,48 @@
       .hero-btn {
         padding: 15px 18px;
         font-size: 0.94rem;
+      }
+
+      .contact-hero-card {
+        min-height: 0;
+      }
+
+      .contact-hero-copy {
+        padding: 34px 18px 14px;
+      }
+
+      .contact-hero-title {
+        font-size: clamp(2.5rem, 10vw, 3.8rem);
+        line-height: 0.94;
+      }
+
+      .contact-hero-description {
+        max-width: 280px;
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+
+      .contact-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .contact-hero-btn {
+        width: 100%;
+        min-height: 54px;
+        padding: 0 18px;
+        justify-content: flex-start;
+        font-size: 0.92rem;
+      }
+
+      .contact-hero-visual {
+        min-height: 280px;
+      }
+
+      .contact-hero-image {
+        object-position: 64% center;
       }
 
       .stat {
@@ -4635,6 +4900,365 @@
         width: 160px;
       }
     }
+
+    /* Final home-page mobile polish: desktop untouched, only stronger mobile overrides */
+    @media (max-width: 820px) {
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      .hero-inner,
+      .about-shell,
+      .journey-shell,
+      .news-shell,
+      .hospital-shell,
+      .video-shell,
+      .social-shell,
+      .values-shell,
+      .testimonials-shell,
+      .press-shell,
+      .section-shell {
+        width: calc(100% - 24px);
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .hero-copy {
+        padding: 138px 0 20px;
+        max-width: none;
+      }
+
+      .hero-kicker {
+        max-width: 100%;
+        font-size: 0.66rem;
+        line-height: 1.55;
+      }
+
+      .hero-title {
+        max-width: 100%;
+        font-size: clamp(2.7rem, 11vw, 4rem);
+        line-height: 0.92;
+      }
+
+      .hero-description {
+        max-width: none;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-btn,
+      .about-btn,
+      .about-btn-secondary,
+      .journey-btn,
+      .news-btn,
+      .hospital-btn,
+      .hospital-direction,
+      .video-btn,
+      .social-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .press-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 16px 0 18px;
+      }
+
+      .press-label {
+        text-align: center;
+      }
+
+      .press-logos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .about-section,
+      .journey-section,
+      .news-section,
+      .hospital-section,
+      .video-section,
+      .social-section,
+      .values-section,
+      .testimonials-section {
+        padding-top: 44px;
+        padding-bottom: 44px;
+      }
+
+      .about-shell {
+        gap: 18px;
+      }
+
+      .about-visual {
+        min-height: 260px;
+        border-radius: 22px;
+      }
+
+      .about-floating-card {
+        max-width: 138px;
+        padding: 9px 10px;
+      }
+
+      .about-floating-card-bottom,
+      .about-visual-tags {
+        display: none;
+      }
+
+      .about-content {
+        padding: 0;
+      }
+
+      .about-heading,
+      .journey-heading,
+      .news-heading,
+      .hospital-title,
+      .video-heading,
+      .social-heading,
+      .testimonials-heading {
+        font-size: clamp(1.9rem, 7.6vw, 2.55rem);
+        line-height: 0.98;
+      }
+
+      .about-copy {
+        font-size: 0.9rem;
+        line-height: 1.62;
+      }
+
+      .journey-shell {
+        gap: 18px;
+      }
+
+      .journey-track,
+      .journey-node {
+        display: none;
+      }
+
+      .journey-cards {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .journey-card-wrap {
+        padding-top: 0;
+      }
+
+      .journey-card {
+        min-height: 0;
+        grid-template-rows: auto 110px;
+      }
+
+      .journey-card-body {
+        padding: 18px 16px 16px;
+      }
+
+      .journey-card-image {
+        min-height: 110px;
+      }
+
+      .news-grid {
+        grid-auto-columns: 88%;
+      }
+
+      .news-controls {
+        justify-content: center;
+      }
+
+      .news-card,
+      .video-card,
+      .social-card,
+      .testimonial-card {
+        border-radius: 16px;
+      }
+
+      .video-grid,
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .social-panels {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .social-card {
+        min-height: 0;
+      }
+
+      .social-collage {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .social-tile {
+        min-height: 92px;
+      }
+
+      .testimonials-shell {
+        gap: 16px;
+      }
+
+      .testimonials-prev,
+      .testimonials-next {
+        width: 40px;
+        height: 40px;
+      }
+
+      .testimonials-grid {
+        grid-auto-columns: 100%;
+      }
+
+      .footer-recognition {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-recognition-title,
+      .footer-title {
+        text-align: center;
+      }
+
+      .footer-recognition-chip {
+        min-width: 150px;
+        height: 56px;
+      }
+
+      .footer-panel {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-shell {
+        width: calc(100% - 20px);
+        padding: 0 8px;
+      }
+
+      .mobile-nav-panel {
+        gap: 14px;
+      }
+
+      #navbar.menu-open .mobile-nav-panel {
+        padding: 14px;
+      }
+
+      .hero-copy {
+        padding-top: 128px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 12vw, 3rem);
+      }
+
+      .hero-description,
+      .about-copy,
+      .journey-copy,
+      .news-copy,
+      .hospital-copy,
+      .social-copy,
+      .testimonial-quote {
+        font-size: 0.92rem;
+      }
+
+      .press-logos {
+        grid-template-columns: 1fr;
+      }
+
+      .about-visual {
+        min-height: 220px;
+      }
+
+      .about-floating-card {
+        max-width: 122px;
+        padding: 8px 9px;
+        left: 12px;
+        bottom: 12px;
+      }
+
+      .about-card-label {
+        margin-bottom: 8px;
+        font-size: 0.58rem;
+        letter-spacing: 0.12em;
+      }
+
+      .about-floating-card::after {
+        width: 34px;
+        margin-top: 10px;
+      }
+
+      .about-floating-card strong {
+        font-size: 0.7rem;
+        line-height: 1.45;
+      }
+
+      .about-floating-card span {
+        margin-top: 5px;
+        font-size: 0.64rem;
+        line-height: 1.4;
+      }
+
+      .about-heading {
+        font-size: clamp(1.78rem, 7.8vw, 2.2rem);
+        line-height: 0.96;
+      }
+
+      .about-copy {
+        font-size: 0.86rem;
+        line-height: 1.56;
+      }
+
+      .news-grid {
+        grid-auto-columns: 100%;
+      }
+
+      .news-card-top,
+      .video-thumb {
+        height: 180px;
+      }
+
+      .hospital-visual {
+        min-height: 200px;
+      }
+
+      .social-icons {
+        gap: 10px;
+      }
+
+      .social-icon-chip {
+        width: 40px;
+        height: 40px;
+      }
+
+      .social-card {
+        padding: 12px;
+      }
+
+      .social-video-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .testimonials-section {
+        padding-top: 22px;
+      }
+
+      .footer-column {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      .footer-links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-cta,
+      .footer-submit {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -4686,26 +5310,24 @@
         </a>
 
         <div class="mobile-nav-socials" aria-label="Social links">
-          <a href="#insights" class="mobile-nav-social" aria-label="Instagram">
+          <a href="https://www.instagram.com/mohammedsaadmushtaque/?hl=hi" target="_blank" rel="noopener noreferrer" class="mobile-nav-social" aria-label="Instagram">
             <svg viewBox="0 0 24 24">
-              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-              <circle cx="12" cy="12" r="4"></circle>
-              <circle cx="17.5" cy="6.5" r="1.2"></circle>
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.4 1.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2Z"></path>
             </svg>
           </a>
-          <a href="#insights" class="mobile-nav-social" aria-label="Facebook">
+          <a href="https://www.facebook.com/mohammedsaad.mushtaque/photos" target="_blank" rel="noopener noreferrer" class="mobile-nav-social" aria-label="Facebook">
             <svg viewBox="0 0 24 24">
-              <path d="M13.5 21v-7h2.3l.3-2.7h-2.6V9.6c0-.8.2-1.3 1.4-1.3H16V5.9c-.6-.1-1.3-.1-1.9-.1-1.9 0-3.3 1.2-3.3 3.4v2.1H8.5V14h2.3v7z"></path>
+              <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.5 1.5-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2.3H8V14h2.3v8h3.2Z"></path>
             </svg>
           </a>
-          <a href="#insights" class="mobile-nav-social" aria-label="Facebook">
+          <a href="https://wa.me/917033582072" target="_blank" rel="noopener noreferrer" class="mobile-nav-social" aria-label="WhatsApp">
             <svg viewBox="0 0 24 24">
-              <path d="M13.5 21v-7h2.3l.3-2.7h-2.6V9.6c0-.8.2-1.3 1.4-1.3H16V5.9c-.6-.1-1.3-.1-1.9-.1-1.9 0-3.3 1.2-3.3 3.4v2.1H8.5V14h2.3v7z"></path>
+              <path d="M12.04 2C6.55 2 2.09 6.45 2.09 11.94c0 1.76.46 3.48 1.33 5l-1.42 5.18 5.31-1.39a9.9 9.9 0 0 0 4.73 1.2h.01c5.49 0 9.95-4.46 9.95-9.95A9.9 9.9 0 0 0 12.04 2Zm0 18.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.17-3.15.83.84-3.07-.2-.31a8.18 8.18 0 0 1-1.26-4.39 8.26 8.26 0 1 1 8.25 8.26Zm4.53-6.18c-.25-.13-1.48-.73-1.71-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.03-.38-1.96-1.23-.72-.64-1.21-1.43-1.35-1.68-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.76-1.85-.2-.48-.4-.41-.56-.42h-.47a.9.9 0 0 0-.64.29c-.22.25-.85.83-.85 2.03s.87 2.36.99 2.52c.13.17 1.7 2.59 4.11 3.63.57.25 1.01.4 1.36.51.57.18 1.08.15 1.49.09.46-.07 1.48-.61 1.69-1.2.21-.58.21-1.08.15-1.19-.07-.11-.23-.17-.48-.29Z"></path>
             </svg>
           </a>
-          <a href="#media" class="mobile-nav-social" aria-label="YouTube">
+          <a href="https://youtu.be/l47Slc5p5Ic?si=eqpcfg0H_92l4YL1" target="_blank" rel="noopener noreferrer" class="mobile-nav-social" aria-label="YouTube">
             <svg viewBox="0 0 24 24">
-              <path d="M21.6 7.7a2.8 2.8 0 0 0-2-2c-1.8-.5-7.6-.5-7.6-.5s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A28.4 28.4 0 0 0 2 12a28.4 28.4 0 0 0 .4 4.3 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A28.4 28.4 0 0 0 22 12a28.4 28.4 0 0 0-.4-4.3ZM10 15.2V8.8l5.2 3.2Z"></path>
+              <path d="M23 12.1s0-3-0.4-4.3a3 3 0 0 0-2.1-2.1C19.2 5.2 12 5.2 12 5.2s-7.2 0-8.5.5A3 3 0 0 0 1.4 7.8C1 9.1 1 12 1 12s0 3 .4 4.3a3 3 0 0 0 2.1 2.1c1.3.5 8.5.5 8.5.5s7.2 0 8.5-.5a3 3 0 0 0 2.1-2.1c.4-1.3.4-4.2.4-4.2ZM9.7 15.7V8.3l6.2 3.7-6.2 3.7Z"></path>
             </svg>
           </a>
         </div>
@@ -4717,7 +5339,7 @@
     <section id="home" class="hero">
       <div class="hero-inner">
         <div class="hero-copy">
-          <p class="hero-kicker">Entrepreneur â€¢ Healthcare Leader â€¢ Institution Builder</p>
+          <p class="hero-kicker">Entrepreneur &bull; Healthcare Leader &bull; Institution Builder</p>
 
           <h1 class="hero-title">
             <span class="hero-title-line"><span>A DREAM.</span></span>
@@ -5430,79 +6052,69 @@
     <section id="media" class="video-hub">
       <div class="video-shell">
         <div class="video-intro">
-          <span class="video-eyebrow">Media Hub</span>
-          <h2 class="video-heading">Watch &amp; Learn</h2>
+          <span class="video-eyebrow">Media Coverage</span>
+          <h2 class="video-heading">Featured Stories</h2>
           <p class="video-copy">
-            Interviews, podcasts, talks and conversations that share ideas, experiences and insights.
+            Articles, interviews and press features that highlight leadership, healthcare vision and public impact.
           </p>
-          <a href="#contact" class="video-btn">
-            <span>View All Videos</span>
+          <a href="blogs.html" class="video-btn">
+            <span>View All Stories</span>
             <span class="btn-icon-svg" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 6v12l10-6Z"></path></svg>
+              <svg viewBox="0 0 24 24"><path d="M5 12h14"></path><path d="m13 5 7 7-7 7"></path></svg>
             </span>
           </a>
         </div>
 
         <div class="video-grid">
-          <article class="video-card featured-media">
+          <a href="https://english.punjabbytes.com/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" class="video-card featured-media" target="_blank" rel="noopener noreferrer" aria-label="Open Punjab Bytes article">
             <div class="video-thumb" style="background-image: linear-gradient(180deg, rgba(8, 20, 38, 0.02) 0%, rgba(8, 20, 38, 0.38) 100%), url('images/media-punjab-bytes-feature.png'); background-position: center 32%;">
-              <span class="video-time">36:45</span>
-              <span class="video-play" aria-hidden="true"></span>
             </div>
             <div class="video-card-body">
               <div class="video-card-meta">Featured On</div>
               <h3 class="video-title">Punjab Bytes</h3>
               <div class="video-subtitle">Healthcare Leadership<br>&amp; Entrepreneurship</div>
             </div>
-          </article>
+          </a>
 
-          <article class="video-card featured-media">
+          <a href="https://thedailybeat.in/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership-7832" class="video-card featured-media" target="_blank" rel="noopener noreferrer" aria-label="Open The Daily Beat article">
             <div class="video-thumb" style="background-image: linear-gradient(180deg, rgba(8, 20, 38, 0.02) 0%, rgba(8, 20, 38, 0.38) 100%), url('images/media-daily-beat-feature.png'); background-position: 58% 26%;">
-              <span class="video-time">12:20</span>
-              <span class="video-play" aria-hidden="true"></span>
             </div>
             <div class="video-card-body">
               <div class="video-card-meta">Exclusive On</div>
               <h3 class="video-title">The Daily Beat</h3>
               <div class="video-subtitle">Director Conversation</div>
             </div>
-          </article>
+          </a>
 
-          <article class="video-card featured-media">
+          <a href="https://entrepreneurhunt.com/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" class="video-card featured-media" target="_blank" rel="noopener noreferrer" aria-label="Open Entrepreneur Hunt article">
             <div class="video-thumb" style="background-image: linear-gradient(180deg, rgba(8, 20, 38, 0.02) 0%, rgba(8, 20, 38, 0.38) 100%), url('images/media-entrepreneur-hunt-feature-v2.png'); background-position: 70% 30%;">
-              <span class="video-time">19:30</span>
-              <span class="video-play" aria-hidden="true"></span>
             </div>
             <div class="video-card-body">
               <div class="video-card-meta">Exclusive Interview</div>
               <h3 class="video-title">Building MR Hospital</h3>
               <div class="video-subtitle">The Entrepreneur Hunt<br>Interview</div>
             </div>
-          </article>
+          </a>
 
-          <article class="video-card featured-media">
+          <a href="https://influenciveindia.in/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" class="video-card featured-media" target="_blank" rel="noopener noreferrer" aria-label="Open Influencive India article">
             <div class="video-thumb" style="background-image: linear-gradient(180deg, rgba(8, 20, 38, 0.02) 0%, rgba(8, 20, 38, 0.38) 100%), url('images/media-influencive-india-feature.png'); background-position: 46% 28%;">
-              <span class="video-time">18:20</span>
-              <span class="video-play" aria-hidden="true"></span>
             </div>
             <div class="video-card-body">
               <div class="video-card-meta">Exclusive Interview</div>
               <h3 class="video-title">Healthcare Vision</h3>
               <div class="video-subtitle">Influencive India</div>
             </div>
-          </article>
+          </a>
 
-          <article class="video-card featured-media">
+          <a href="https://hindustaninsider.in/2026/06/09/mohammed-saad-mushtaque-a-remarkable-journey-of-struggle-vision-and-service/" class="video-card featured-media" target="_blank" rel="noopener noreferrer" aria-label="Open Hindustan Insider article">
             <div class="video-thumb" style="background-image: linear-gradient(180deg, rgba(8, 20, 38, 0.02) 0%, rgba(8, 20, 38, 0.38) 100%), url('images/media-hindustan-insider-feature.png'); background-position: 82% 30%;">
-              <span class="video-time">21:45</span>
-              <span class="video-play" aria-hidden="true"></span>
             </div>
             <div class="video-card-body">
               <div class="video-card-meta">Exclusive Interview</div>
               <h3 class="video-title">Leadership &amp;<br>Community Impact</h3>
               <div class="video-subtitle">Hindustan Insider</div>
             </div>
-          </article>
+          </a>
         </div>
       </div>
     </section>
@@ -5517,26 +6129,26 @@
           </p>
 
           <div class="social-icons" aria-label="Social platforms">
-            <span class="social-icon-chip instagram" aria-label="Instagram">
+            <a href="https://www.instagram.com/mohammedsaadmushtaque/?hl=hi" target="_blank" rel="noopener noreferrer" class="social-icon-chip instagram" aria-label="Instagram">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.4 1.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2Z"></path>
               </svg>
-            </span>
-            <span class="social-icon-chip facebook" aria-label="Facebook">
+            </a>
+            <a href="https://www.facebook.com/mohammedsaad.mushtaque/photos" target="_blank" rel="noopener noreferrer" class="social-icon-chip facebook" aria-label="Facebook">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.2-1.5 1.5-1.5h1.7V4.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2v2.3H8V14h2.3v8h3.2Z"></path>
               </svg>
-            </span>
-            <span class="social-icon-chip whatsapp" aria-label="WhatsApp">
+            </a>
+            <a href="https://wa.me/917033582072" target="_blank" rel="noopener noreferrer" class="social-icon-chip whatsapp" aria-label="WhatsApp">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12.04 2C6.55 2 2.09 6.45 2.09 11.94c0 1.76.46 3.48 1.33 5l-1.42 5.18 5.31-1.39a9.9 9.9 0 0 0 4.73 1.2h.01c5.49 0 9.95-4.46 9.95-9.95A9.9 9.9 0 0 0 12.04 2Zm0 18.2a8.2 8.2 0 0 1-4.18-1.15l-.3-.17-3.15.83.84-3.07-.2-.31a8.18 8.18 0 0 1-1.26-4.39 8.26 8.26 0 1 1 8.25 8.26Zm4.53-6.18c-.25-.13-1.48-.73-1.71-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.03-.38-1.96-1.23-.72-.64-1.21-1.43-1.35-1.68-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.76-1.85-.2-.48-.4-.41-.56-.42h-.47a.9.9 0 0 0-.64.29c-.22.25-.85.83-.85 2.03s.87 2.36.99 2.52c.13.17 1.7 2.59 4.11 3.63.57.25 1.01.4 1.36.51.57.18 1.08.15 1.49.09.46-.07 1.48-.61 1.69-1.2.21-.58.21-1.08.15-1.19-.07-.11-.23-.17-.48-.29Z"></path>
               </svg>
-            </span>
-            <span class="social-icon-chip youtube" aria-label="YouTube">
+            </a>
+            <a href="https://youtu.be/l47Slc5p5Ic?si=eqpcfg0H_92l4YL1" target="_blank" rel="noopener noreferrer" class="social-icon-chip youtube" aria-label="YouTube">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M23 12.1s0-3-0.4-4.3a3 3 0 0 0-2.1-2.1C19.2 5.2 12 5.2 12 5.2s-7.2 0-8.5.5A3 3 0 0 0 1.4 7.8C1 9.1 1 12 1 12s0 3 .4 4.3a3 3 0 0 0 2.1 2.1c1.3.5 8.5.5 8.5.5s7.2 0 8.5-.5a3 3 0 0 0 2.1-2.1c.4-1.3.4-4.2.4-4.2ZM9.7 15.7V8.3l6.2 3.7-6.2 3.7Z"></path>
               </svg>
-            </span>
+            </a>
           </div>
         </div>
 
@@ -5594,7 +6206,7 @@
     <section class="values-strip" aria-label="Core values">
       <div class="values-shell">
         <div class="values-grid">
-          <article class="value-item">
+          <a href="about-us.html" class="value-item">
             <span class="value-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M12 20s-6-3.9-6-9.1a3.9 3.9 0 0 1 7.2-2.1A3.9 3.9 0 0 1 18 10.9C18 16.1 12 20 12 20Z"></path>
@@ -5602,9 +6214,9 @@
               </svg>
             </span>
             <h3 class="value-title">Trust Before<br>Treatment</h3>
-          </article>
+          </a>
 
-          <article class="value-item">
+          <a href="about-us.html" class="value-item">
             <span class="value-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M12 4v4"></path>
@@ -5615,9 +6227,9 @@
               </svg>
             </span>
             <h3 class="value-title">Discipline Over<br>Motivation</h3>
-          </article>
+          </a>
 
-          <article class="value-item">
+          <a href="about-us.html" class="value-item">
             <span class="value-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M12 4v11"></path>
@@ -5627,9 +6239,9 @@
               </svg>
             </span>
             <h3 class="value-title">Impact Over<br>Recognition</h3>
-          </article>
+          </a>
 
-          <article class="value-item">
+          <a href="about-us.html" class="value-item">
             <span class="value-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <circle cx="8" cy="9" r="2.4"></circle>
@@ -5639,9 +6251,9 @@
               </svg>
             </span>
             <h3 class="value-title">People Before<br>Profits</h3>
-          </article>
+          </a>
 
-          <article class="value-item">
+          <a href="about-us.html" class="value-item">
             <span class="value-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M12 4v16"></path>
@@ -5651,7 +6263,7 @@
               </svg>
             </span>
             <h3 class="value-title">Never Forget<br>Your Roots</h3>
-          </article>
+          </a>
         </div>
       </div>
     </section>
@@ -5679,7 +6291,7 @@
 
         <div class="testimonials-track">
           <div class="testimonials-grid">
-            <a href="https://share.google/RPJ2BRIVNF1WRFFO1" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
+            <a href="https://www.google.com/search?q=MR+Hospital+Patna+Bailey+Road+Patna+reviews" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
               <article class="testimonial-card">
                 <div class="testimonial-card-head">
                   <div class="testimonial-author">
@@ -5707,7 +6319,7 @@
               </article>
             </a>
 
-            <a href="https://share.google/RPJ2BRIVNF1WRFFO1" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
+            <a href="https://www.google.com/search?q=MR+Hospital+Patna+Bailey+Road+Patna+reviews" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
               <article class="testimonial-card">
                 <div class="testimonial-card-head">
                   <div class="testimonial-author">
@@ -5735,7 +6347,7 @@
               </article>
             </a>
 
-            <a href="https://share.google/RPJ2BRIVNF1WRFFO1" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
+            <a href="https://www.google.com/search?q=MR+Hospital+Patna+Bailey+Road+Patna+reviews" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
               <article class="testimonial-card">
                 <div class="testimonial-card-head">
                   <div class="testimonial-author">
@@ -5763,7 +6375,7 @@
               </article>
             </a>
 
-            <a href="https://share.google/RPJ2BRIVNF1WRFFO1" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
+            <a href="https://www.google.com/search?q=MR+Hospital+Patna+Bailey+Road+Patna+reviews" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
               <article class="testimonial-card">
                 <div class="testimonial-card-head">
                   <div class="testimonial-author">
@@ -5791,7 +6403,7 @@
               </article>
             </a>
 
-            <a href="https://share.google/RPJ2BRIVNF1WRFFO1" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
+            <a href="https://www.google.com/search?q=MR+Hospital+Patna+Bailey+Road+Patna+reviews" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
               <article class="testimonial-card">
                 <div class="testimonial-card-head">
                   <div class="testimonial-author">
@@ -5819,7 +6431,7 @@
               </article>
             </a>
 
-            <a href="https://share.google/RPJ2BRIVNF1WRFFO1" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
+            <a href="https://www.google.com/search?q=MR+Hospital+Patna+Bailey+Road+Patna+reviews" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
               <article class="testimonial-card">
                 <div class="testimonial-card-head">
                   <div class="testimonial-author">
@@ -5847,7 +6459,7 @@
               </article>
             </a>
 
-            <a href="https://share.google/RPJ2BRIVNF1WRFFO1" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
+            <a href="https://www.google.com/search?q=MR+Hospital+Patna+Bailey+Road+Patna+reviews" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
               <article class="testimonial-card">
                 <div class="testimonial-card-head">
                   <div class="testimonial-author">
@@ -5875,7 +6487,7 @@
               </article>
             </a>
 
-            <a href="https://share.google/RPJ2BRIVNF1WRFFO1" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
+            <a href="https://www.google.com/search?q=MR+Hospital+Patna+Bailey+Road+Patna+reviews" target="_blank" rel="noopener noreferrer" class="testimonial-link-card" aria-label="Open MR Hospital Google Business Profile review">
               <article class="testimonial-card">
                 <div class="testimonial-card-head">
                   <div class="testimonial-author">
@@ -5920,18 +6532,18 @@
           <span class="footer-recognition-title">Featured On</span>
           <div class="footer-recognition-marquee">
             <div class="footer-recognition-track">
-              <span class="footer-recognition-chip"><img src="images/logo-punjab-bytes-removebg-preview.png" alt="Punjab Bytes"></span>
-              <span class="footer-recognition-chip"><img src="images/images__1_-removebg-preview.png" alt="The Daily Beat"></span>
-              <span class="footer-recognition-chip"><img src="images/rs_w_388_h_194_cg_true_m-removebg-preview.png" alt="Entrepreneur Hunt"></span>
-              <span class="footer-recognition-chip"><img src="images/images__2_-removebg-preview.png" alt="Influencive India"></span>
-              <span class="footer-recognition-chip"><img src="images/cropped-HI-1-removebg-preview.png" alt="Hindustan Insider"></span>
-              <span class="footer-recognition-chip"><img src="images/images__3_-removebg-preview.png" alt="Medium"></span>
-              <span class="footer-recognition-chip"><img src="images/logo-punjab-bytes-removebg-preview.png" alt="Punjab Bytes"></span>
-              <span class="footer-recognition-chip"><img src="images/images__1_-removebg-preview.png" alt="The Daily Beat"></span>
-              <span class="footer-recognition-chip"><img src="images/rs_w_388_h_194_cg_true_m-removebg-preview.png" alt="Entrepreneur Hunt"></span>
-              <span class="footer-recognition-chip"><img src="images/images__2_-removebg-preview.png" alt="Influencive India"></span>
-              <span class="footer-recognition-chip"><img src="images/cropped-HI-1-removebg-preview.png" alt="Hindustan Insider"></span>
-              <span class="footer-recognition-chip"><img src="images/images__3_-removebg-preview.png" alt="Medium"></span>
+              <a href="https://english.punjabbytes.com/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Punjab Bytes article"><img src="images/logo-punjab-bytes-removebg-preview.png" alt="Punjab Bytes"></a>
+              <a href="https://thedailybeat.in/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership-7832" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open The Daily Beat article"><img src="images/images__1_-removebg-preview.png" alt="The Daily Beat"></a>
+              <a href="https://entrepreneurhunt.com/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Entrepreneur Hunt article"><img src="images/rs_w_388_h_194_cg_true_m-removebg-preview.png" alt="Entrepreneur Hunt"></a>
+              <a href="https://influenciveindia.in/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Influencive India article"><img src="images/images__2_-removebg-preview.png" alt="Influencive India"></a>
+              <a href="https://hindustaninsider.in/2026/06/09/mohammed-saad-mushtaque-a-remarkable-journey-of-struggle-vision-and-service/" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Hindustan Insider article"><img src="images/cropped-HI-1-removebg-preview.png" alt="Hindustan Insider"></a>
+              <a href="https://medium.com/@usedtiresnearme/mohammed-saad-mushtaque-a-remarkable-journey-of-struggle-vision-and-service-b4f1472b79d1" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Medium article"><img src="images/images__3_-removebg-preview.png" alt="Medium"></a>
+              <a href="https://english.punjabbytes.com/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Punjab Bytes article"><img src="images/logo-punjab-bytes-removebg-preview.png" alt="Punjab Bytes"></a>
+              <a href="https://thedailybeat.in/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership-7832" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open The Daily Beat article"><img src="images/images__1_-removebg-preview.png" alt="The Daily Beat"></a>
+              <a href="https://entrepreneurhunt.com/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Entrepreneur Hunt article"><img src="images/rs_w_388_h_194_cg_true_m-removebg-preview.png" alt="Entrepreneur Hunt"></a>
+              <a href="https://influenciveindia.in/mohammed-saad-mushtaques-inspiring-journey-from-humble-beginnings-to-healthcare-leadership" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Influencive India article"><img src="images/images__2_-removebg-preview.png" alt="Influencive India"></a>
+              <a href="https://hindustaninsider.in/2026/06/09/mohammed-saad-mushtaque-a-remarkable-journey-of-struggle-vision-and-service/" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Hindustan Insider article"><img src="images/cropped-HI-1-removebg-preview.png" alt="Hindustan Insider"></a>
+              <a href="https://medium.com/@usedtiresnearme/mohammed-saad-mushtaque-a-remarkable-journey-of-struggle-vision-and-service-b4f1472b79d1" target="_blank" rel="noopener noreferrer" class="footer-recognition-chip" aria-label="Open Medium article"><img src="images/images__3_-removebg-preview.png" alt="Medium"></a>
             </div>
           </div>
         </div>
@@ -5979,7 +6591,7 @@
             <span class="footer-title">Get In Touch</span>
             <div class="footer-contact-card">
               <div class="footer-contact-list">
-                <div class="footer-contact-item">
+                <a href="mailto:hello@mohammadsaad.com" class="footer-contact-item">
                   <span class="footer-contact-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24">
                       <rect x="3" y="5" width="18" height="14" rx="2"></rect>
@@ -5987,18 +6599,18 @@
                     </svg>
                   </span>
                   <span>hello@mohammadsaad.com</span>
-                </div>
+                </a>
 
-                <div class="footer-contact-item">
+                <a href="tel:+919034556789" class="footer-contact-item">
                   <span class="footer-contact-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24">
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.52 19.52 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72l.34 2.68a2 2 0 0 1-.57 1.72l-1.4 1.4a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 1.72-.57l2.68.34A2 2 0 0 1 22 16.92Z"></path>
                     </svg>
                   </span>
                   <span>+91 90345 56789</span>
-                </div>
+                </a>
 
-                <div class="footer-contact-item">
+                <a href="https://share.google/RPJ2BRIVNF1WRFFO1" target="_blank" rel="noopener noreferrer" class="footer-contact-item">
                   <span class="footer-contact-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24">
                       <path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z"></path>
@@ -6006,10 +6618,10 @@
                     </svg>
                   </span>
                   <span>Patna, Bihar</span>
-                </div>
+                </a>
               </div>
 
-              <a href="#contact" class="footer-cta">
+              <a href="contact-us.html" class="footer-cta">
                 <span>Let's Connect</span>
                 <span class="btn-icon-svg" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="m4 8 8 6 8-6"></path></svg>
@@ -6046,7 +6658,7 @@
                   <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm10.4 1.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2.2A2.8 2.8 0 1 0 12 14.8 2.8 2.8 0 0 0 12 9.2Z"></path>
                 </svg>
               </a>
-              <a href="#media" class="footer-social youtube" aria-label="YouTube">
+              <a href="https://youtu.be/l47Slc5p5Ic?si=eqpcfg0H_92l4YL1" target="_blank" rel="noopener noreferrer" class="footer-social youtube" aria-label="YouTube">
                 <svg viewBox="0 0 24 24">
                   <path d="M23 12.1s0-3-0.4-4.3a3 3 0 0 0-2.1-2.1C19.2 5.2 12 5.2 12 5.2s-7.2 0-8.5.5A3 3 0 0 0 1.4 7.8C1 9.1 1 12 1 12s0 3 .4 4.3a3 3 0 0 0 2.1 2.1c1.3.5 8.5.5 8.5.5s7.2 0 8.5-.5a3 3 0 0 0 2.1-2.1c.4-1.3.4-4.2.4-4.2ZM9.7 15.7V8.3l6.2 3.7-6.2 3.7Z"></path>
                 </svg>
@@ -6067,11 +6679,6 @@
 
         <div class="footer-bottom">
           <p class="footer-note">© 2026 Mohammad Saad. All Rights Reserved.</p>
-          <div class="footer-legal">
-            <a href="#contact" class="footer-legal-link">Privacy Policy</a>
-            <a href="#contact" class="footer-legal-link">Terms</a>
-            <a href="#contact" class="footer-legal-link">Accessibility</a>
-          </div>
         </div>
       </div>
     </section>
@@ -6183,6 +6790,7 @@
     const pressLogoItems = pressLogos ? Array.from(pressLogos.children) : [];
     const pressPrev = document.getElementById("pressPrev");
     const pressNext = document.getElementById("pressNext");
+    const pressViewport = document.querySelector(".press-viewport");
     const newsGrid = document.querySelector(".news-grid");
     const newsCards = document.querySelectorAll(".news-card");
     const newsPrev = document.getElementById("newsPrev");
@@ -6195,6 +6803,7 @@
     let pressOffset = 0;
     let pressTrackWidth = 0;
     let pressAnimationFrame = null;
+    let isPressPaused = false;
     let newsIndex = 0;
     let newsTimer = null;
     let testimonialsIndex = 0;
@@ -6266,7 +6875,6 @@
 
       pressLogoItems.forEach((item) => {
         const clone = item.cloneNode(true);
-        clone.setAttribute("aria-hidden", "true");
         pressLogos.appendChild(clone);
       });
 
@@ -6274,6 +6882,11 @@
       pressLogos.style.transform = "translateX(0px)";
 
       function animatePressStrip() {
+        if (isPressPaused) {
+          pressAnimationFrame = null;
+          return;
+        }
+
         pressOffset -= 0.38;
 
         if (Math.abs(pressOffset) >= pressTrackWidth) {
@@ -6286,6 +6899,40 @@
 
       if (pressAnimationFrame) {
         window.cancelAnimationFrame(pressAnimationFrame);
+      }
+
+      animatePressStrip();
+    }
+
+    function pausePressStrip() {
+      isPressPaused = true;
+      if (pressAnimationFrame) {
+        window.cancelAnimationFrame(pressAnimationFrame);
+        pressAnimationFrame = null;
+      }
+    }
+
+    function resumePressStrip() {
+      if (!pressLogos || !pressTrackWidth || !isPressPaused) {
+        return;
+      }
+
+      isPressPaused = false;
+
+      function animatePressStrip() {
+        if (isPressPaused) {
+          pressAnimationFrame = null;
+          return;
+        }
+
+        pressOffset -= 0.38;
+
+        if (Math.abs(pressOffset) >= pressTrackWidth) {
+          pressOffset = 0;
+        }
+
+        pressLogos.style.transform = "translateX(" + pressOffset + "px)";
+        pressAnimationFrame = window.requestAnimationFrame(animatePressStrip);
       }
 
       animatePressStrip();
@@ -6449,6 +7096,11 @@
       setupPressStrip();
     }
 
+    if (pressViewport) {
+      pressViewport.addEventListener("mouseenter", pausePressStrip);
+      pressViewport.addEventListener("mouseleave", resumePressStrip);
+    }
+
     if (newsPrev) {
       newsPrev.addEventListener("click", () => {
         stepNews(-1);
@@ -6502,4 +7154,3 @@
   </script>
 </body>
 </html>
-
